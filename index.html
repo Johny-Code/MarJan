@@ -557,6 +557,14 @@
             document.getElementById('intro-' + lang).style.display = 'block';
             document.getElementById('gifts-' + lang).style.display = 'block';
         }
+
+        function toggleReservation(element) {
+            if (element.checked) {
+                alert("Stan: Open (zielony) - Prezent dostępny");
+            } else {
+                alert("Stan: Zarezerwowany (czerwony) - Prezent zarezerwowany");
+            }
+        }
     </script>
 </body>
 </html>
