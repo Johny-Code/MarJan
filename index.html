@@ -63,12 +63,12 @@
 
         th:nth-child(2),
         td:nth-child(2) {
-            width: 20%; /* Szerokość drugiej kolumny */
+            width: 30%; /* Szerokość drugiej kolumny */
         }
 
         th:nth-child(3),
         td:nth-child(3) {
-            width: 30%; /* Szerokość trzeciej kolumny */
+            width: 20%; /* Szerokość trzeciej kolumny */
         }
 
         .category {
@@ -146,6 +146,28 @@
             pointer-events: none; /* Tekst nie blokuje działania przełącznika */
             text-align: center;
             width: 100%; /* Tekst zajmuje całą szerokość przycisku */
+        }
+
+        /* dla urządzeń mobilnych*/
+        @media screen and (max-width: 768px) {
+            .switch {
+                width: 120px; /* Zmniejszona szerokość przycisku na urządzeniach mobilnych */
+                height: 36px; /* Dopasowana wysokość */
+            }
+
+            .slider {
+                font-size: 12px; /* Mniejsza czcionka na mniejszych ekranach */
+            }
+
+            .slider:before {
+                height: 28px; /* Mniejszy suwak */
+                width: 28px; /* Mniejszy suwak */
+                transform: translateX(0); /* Reset przesunięcia */
+            }
+
+            input:checked + .slider:before {
+                transform: translateX(85px); /* Dopasowane przesunięcie suwaka */
+            }
         }
 
         /* Koniec stylu przełączonika */
