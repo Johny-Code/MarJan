@@ -63,12 +63,12 @@
 
         th:nth-child(2),
         td:nth-child(2) {
-            width: 30%; /* Szerokość drugiej kolumny */
+            width: 25%; /* Szerokość drugiej kolumny */
         }
 
         th:nth-child(3),
         td:nth-child(3) {
-            width: 20%; /* Szerokość trzeciej kolumny */
+            width: 25%; /* Szerokość trzeciej kolumny */
         }
 
         .category {
@@ -77,7 +77,7 @@
             font-size: 18px;
             font-weight: bold;
             color: #b28f5b;
-            text-align: right;
+            text-align: left;
             margin-top: 20px;
         }
 
@@ -91,8 +91,9 @@
         .switch {
             position: relative;
             display: inline-block;
-            width: 180px; /* Zwiększona szerokość przycisku */
-            height: 40px; /* Dopasowana wysokość */
+            width: 100%; /* Przełącznik zajmuje 100% szerokości rodzica */
+            max-width: 180px; /* Maksymalna szerokość przycisku */
+            height: 40px; /* Stała wysokość */
         }
 
         .switch input {
@@ -114,7 +115,7 @@
             display: flex;
             align-items: center;
             justify-content: center; /* Wyśrodkowanie tekstu */
-            font-size: 14px; /* Zmniejszona czcionka */
+            font-size: 14px; /* Czcionka przycisku */
             color: white; /* Kolor tekstu */
             font-weight: bold;
         }
@@ -122,10 +123,10 @@
         .slider:before {
             position: absolute;
             content: "";
-            height: 32px;
-            width: 32px;
-            left: 4px;
-            top: 4px;
+            height: 80%; /* Suwak jako procent wysokości */
+            width: 20%; /* Suwak jako procent szerokości */
+            left: 4%; /* Odstęp od lewej */
+            top: 10%; /* Centrowanie w pionie */
             background-color: white;
             transition: .4s;
             border-radius: 50%;
@@ -137,40 +138,41 @@
         }
 
         input:checked + .slider:before {
-            transform: translateX(140px); /* Poprawione przesunięcie suwaka */
+            transform: translateX(80%); /* Przesunięcie suwaka jako procent szerokości */
         }
 
         .status {
             position: relative;
-            z-index: 1; /* Tekst jest widoczny pod suwakiem */
+            z-index: 1; /* Tekst widoczny nad suwakiem */
             pointer-events: none; /* Tekst nie blokuje działania przełącznika */
             text-align: center;
             width: 100%; /* Tekst zajmuje całą szerokość przycisku */
         }
 
-        /* dla urządzeń mobilnych*/
+        /* dla urządzeń mobilnych */
         @media screen and (max-width: 768px) {
             .switch {
-                width: 120px; /* Zmniejszona szerokość przycisku na urządzeniach mobilnych */
+                width: 100%; /* Przełącznik zajmuje 100% szerokości rodzica */
+                max-width: 140px; /* Ograniczenie maksymalnej szerokości na mniejszych ekranach */
                 height: 36px; /* Dopasowana wysokość */
             }
 
             .slider {
-                font-size: 12px; /* Mniejsza czcionka na mniejszych ekranach */
+                font-size: 12px; /* Mniejsza czcionka */
             }
 
             .slider:before {
-                height: 28px; /* Mniejszy suwak */
-                width: 28px; /* Mniejszy suwak */
-                transform: translateX(0); /* Reset przesunięcia */
+                height: 70%; /* Zmniejszenie wysokości suwaka */
+                width: 20%; /* Proporcjonalna szerokość suwaka */
+                left: 4%; /* Resetowane pozycjonowanie */
+                top: 15%; /* Centrowanie w pionie */
             }
 
             input:checked + .slider:before {
-                transform: translateX(85px); /* Dopasowane przesunięcie suwaka */
+                transform: translateX(76%); /* Dostosowane przesunięcie suwaka */
             }
         }
-
-        /* Koniec stylu przełączonika */
+        /* Koniec stylu przełącznika */
 
         footer {
             text-align: center;
