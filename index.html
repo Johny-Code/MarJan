@@ -91,8 +91,8 @@
         .switch {
             position: relative;
             display: inline-block;
-            width: 100px; /* Szerokość przełącznika */
-            height: 30px; /* Wysokość przełącznika */
+            width: 120px; /* Szerokość przycisku */
+            height: 40px; /* Wysokość przycisku */
         }
 
         .switch input {
@@ -108,13 +108,13 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #f44336; /* Domyślnie czerwony (Zarezerwowane) */
+            background-color: #4caf50; /* Domyślnie zielony (Dostępny) */
             transition: .4s;
-            border-radius: 15px; /* Zaokrąglone krawędzie */
+            border-radius: 20px; /* Zaokrąglone krawędzie */
             display: flex;
             align-items: center;
             justify-content: center; /* Wyśrodkowanie tekstu */
-            font-size: 14px;
+            font-size: 16px;
             color: white; /* Kolor tekstu */
             font-weight: bold;
         }
@@ -122,26 +122,26 @@
         .slider:before {
             position: absolute;
             content: "";
-            height: 24px;
-            width: 24px;
-            left: 3px;
-            bottom: 3px;
+            height: 32px;
+            width: 32px;
+            left: 4px;
+            bottom: 4px;
             background-color: white;
             transition: .4s;
             border-radius: 50%;
         }
 
         input:checked + .slider {
-            background-color: #4caf50; /* Zielony, gdy zaznaczony (Dostępne) */
+            background-color: #f44336; /* Czerwony, gdy zaznaczony (Zarezerwowane) */
         }
 
         input:checked + .slider:before {
-            transform: translateX(70px); /* Przesunięcie suwaka */
+            transform: translateX(80px); /* Przesunięcie suwaka w prawo */
         }
 
         .status {
             position: relative;
-            z-index: 1; /* Ustawia tekst nad przełącznikiem */
+            z-index: 1; /* Tekst jest widoczny nad przyciskiem */
             pointer-events: none; /* Tekst nie blokuje działania przełącznika */
         }
         /* Koniec stylu przełączonika */
@@ -205,7 +205,7 @@
                         <label class="switch">
                             <input type="checkbox" onchange="toggleReservation(this)">
                             <span class="slider">
-                                <span class="status">Zarezerwowane</span>
+                                <span class="status">Dostępny</span>
                             </span>
                         </label>
                     </td>
@@ -217,7 +217,7 @@
                         <label class="switch">
                             <input type="checkbox" onchange="toggleReservation(this)">
                             <span class="slider">
-                                <span class="status">Zarezerwowane</span>
+                                <span class="status">Dostępny</span>
                             </span>
                         </label>
                     </td>
@@ -229,7 +229,7 @@
                         <label class="switch">
                             <input type="checkbox" onchange="toggleReservation(this)">
                             <span class="slider">
-                                <span class="status">Zarezerwowane</span>
+                                <span class="status">Dostępny</span>
                             </span>
                         </label>
                     </td>
@@ -241,7 +241,7 @@
                         <label class="switch">
                             <input type="checkbox" onchange="toggleReservation(this)">
                             <span class="slider">
-                                <span class="status">Zarezerwowane</span>
+                                <span class="status">Dostępny</span>
                             </span>
                         </label>
                     </td>
@@ -253,7 +253,7 @@
                         <label class="switch">
                             <input type="checkbox" onchange="toggleReservation(this)">
                             <span class="slider">
-                                <span class="status">Zarezerwowane</span>
+                                <span class="status">Dostępny</span>
                             </span>
                         </label>
                     </td>
@@ -265,7 +265,7 @@
                         <label class="switch">
                             <input type="checkbox" onchange="toggleReservation(this)">
                             <span class="slider">
-                                <span class="status">Zarezerwowane</span>
+                                <span class="status">Dostępny</span>
                             </span>
                         </label>
                     </td>
@@ -277,7 +277,7 @@
                         <label class="switch">
                             <input type="checkbox" onchange="toggleReservation(this)">
                             <span class="slider">
-                                <span class="status">Zarezerwowane</span>
+                                <span class="status">Dostępny</span>
                             </span>
                         </label>
                     </td>
@@ -289,7 +289,7 @@
                         <label class="switch">
                             <input type="checkbox" onchange="toggleReservation(this)">
                             <span class="slider">
-                                <span class="status">Zarezerwowane</span>
+                                <span class="status">Dostępny</span>
                             </span>
                         </label>
                     </td>
@@ -301,7 +301,7 @@
                         <label class="switch">
                             <input type="checkbox" onchange="toggleReservation(this)">
                             <span class="slider">
-                                <span class="status">Zarezerwowane</span>
+                                <span class="status">Dostępny</span>
                             </span>
                         </label>
                     </td>
@@ -313,7 +313,7 @@
                         <label class="switch">
                             <input type="checkbox" onchange="toggleReservation(this)">
                             <span class="slider">
-                                <span class="status">Zarezerwowane</span>
+                                <span class="status">Dostępny</span>
                             </span>
                         </label>
                     </td>
@@ -325,7 +325,7 @@
                         <label class="switch">
                             <input type="checkbox" onchange="toggleReservation(this)">
                             <span class="slider">
-                                <span class="status">Zarezerwowane</span>
+                                <span class="status">Dostępny</span>
                             </span>
                         </label>
                     </td>
@@ -337,7 +337,7 @@
                         <label class="switch">
                             <input type="checkbox" onchange="toggleReservation(this)">
                             <span class="slider">
-                                <span class="status">Zarezerwowane</span>
+                                <span class="status">Dostępny</span>
                             </span>
                         </label>
                     </td>
@@ -349,7 +349,7 @@
                         <label class="switch">
                             <input type="checkbox" onchange="toggleReservation(this)">
                             <span class="slider">
-                                <span class="status">Zarezerwowane</span>
+                                <span class="status">Dostępny</span>
                             </span>
                         </label>
                     </td>
@@ -370,7 +370,7 @@
                             <label class="switch">
                                 <input type="checkbox" onchange="toggleReservation(this)">
                                 <span class="slider">
-                                    <span class="status">Zarezerwowane</span>
+                                    <span class="status">Dostępny</span>
                                 </span>
                             </label>
                         </td>
@@ -391,7 +391,7 @@
                             <label class="switch">
                                 <input type="checkbox" onchange="toggleReservation(this)">
                                 <span class="slider">
-                                    <span class="status">Zarezerwowane</span>
+                                    <span class="status">Dostępny</span>
                                 </span>
                             </label>
                         </td>
@@ -403,7 +403,7 @@
                             <label class="switch">
                                 <input type="checkbox" onchange="toggleReservation(this)">
                                 <span class="slider">
-                                    <span class="status">Zarezerwowane</span>
+                                    <span class="status">Dostępny</span>
                                 </span>
                             </label>
                         </td>
@@ -415,7 +415,7 @@
                             <label class="switch">
                                 <input type="checkbox" onchange="toggleReservation(this)">
                                 <span class="slider">
-                                    <span class="status">Zarezerwowane</span>
+                                    <span class="status">Dostępny</span>
                                 </span>
                             </label>
                         </td>
@@ -427,7 +427,7 @@
                             <label class="switch">
                                 <input type="checkbox" onchange="toggleReservation(this)">
                                 <span class="slider">
-                                    <span class="status">Zarezerwowane</span>
+                                    <span class="status">Dostępny</span>
                                 </span>
                             </label>
                         </td>
@@ -448,7 +448,7 @@
                             <label class="switch">
                                 <input type="checkbox" onchange="toggleReservation(this)">
                                 <span class="slider">
-                                    <span class="status">Zarezerwowane</span>
+                                    <span class="status">Dostępny</span>
                                 </span>
                             </label>
                         </td>
@@ -460,7 +460,7 @@
                             <label class="switch">
                                 <input type="checkbox" onchange="toggleReservation(this)">
                                 <span class="slider">
-                                    <span class="status">Zarezerwowane</span>
+                                    <span class="status">Dostępny</span>
                                 </span>
                             </label>
                         </td>
@@ -481,7 +481,7 @@
                             <label class="switch">
                                 <input type="checkbox" onchange="toggleReservation(this)">
                                 <span class="slider">
-                                    <span class="status">Zarezerwowane</span>
+                                    <span class="status">Dostępny</span>
                                 </span>
                             </label>
                         </td>
@@ -493,7 +493,7 @@
                             <label class="switch">
                                 <input type="checkbox" onchange="toggleReservation(this)">
                                 <span class="slider">
-                                    <span class="status">Zarezerwowane</span>
+                                    <span class="status">Dostępny</span>
                                 </span>
                             </label>
                         </td>
@@ -514,7 +514,7 @@
                             <label class="switch">
                                 <input type="checkbox" onchange="toggleReservation(this)">
                                 <span class="slider">
-                                    <span class="status">Zarezerwowane</span>
+                                    <span class="status">Dostępny</span>
                                 </span>
                             </label>
                         </td>
@@ -526,7 +526,7 @@
                             <label class="switch">
                                 <input type="checkbox" onchange="toggleReservation(this)">
                                 <span class="slider">
-                                    <span class="status">Zarezerwowane</span>
+                                    <span class="status">Dostępny</span>
                                 </span>
                             </label>
                         </td>
@@ -538,7 +538,7 @@
                             <label class="switch">
                                 <input type="checkbox" onchange="toggleReservation(this)">
                                 <span class="slider">
-                                    <span class="status">Zarezerwowane</span>
+                                    <span class="status">Dostępny</span>
                                 </span>
                             </label>
                         </td>
@@ -562,7 +562,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -574,7 +574,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -586,7 +586,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -598,7 +598,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -610,7 +610,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -622,7 +622,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -634,7 +634,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -646,7 +646,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -658,7 +658,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -670,7 +670,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -682,7 +682,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -694,7 +694,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -706,7 +706,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -727,7 +727,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -748,7 +748,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -760,7 +760,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -772,7 +772,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -784,7 +784,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -805,7 +805,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -817,7 +817,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -838,7 +838,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -850,7 +850,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -871,7 +871,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -883,7 +883,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -895,7 +895,7 @@
                                 <label class="switch">
                                     <input type="checkbox" onchange="toggleReservation(this)">
                                     <span class="slider">
-                                        <span class="status">Zarezerwowane</span>
+                                        <span class="status">Dostępny</span>
                                     </span>
                                 </label>
                             </td>
@@ -919,12 +919,11 @@
         function toggleReservation(element) {
             const slider = element.nextElementSibling; // Pobierz element `.slider`
             const status = slider.querySelector('.status'); // Pobierz element `.status`
-
             if (element.checked) {
-                status.textContent = "Dostępne"; // Zmień tekst na "Dostępne"
+                status.textContent = "Zarezerwowane"; // Zmień tekst na "Zarezerwowane"
                 alert("Bardzo dziękujemy, Twój prezent został zarezerwowany!");
             } else {
-                status.textContent = "Zarezerwowane"; // Zmień tekst na "Zarezerwowane"
+                status.textContent = "Dostępny"; // Zmień tekst na "Dostępny"
                 alert("Twój prezent został zwolniony z rezerwacji.");
             }
         }
