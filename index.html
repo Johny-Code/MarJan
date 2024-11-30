@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Prezentowa Marie i Jana</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #fff;
+            padding: 20px;
+            border-bottom: 2px solid #ccc;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            color: #b28f5b;
+        }
+        .language-switch {
+            margin-top: 10px;
+        }
+        .language-switch button {
+            margin: 0 5px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+        .category {
+            font-size: 18px;
+            font-weight: bold;
+            color: #b28f5b;
+            margin-top: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #fff;
+            border-top: 2px solid #ccc;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Lista Prezentowa Marie i Jana</h1>
+        <div class="language-switch">
+            <button onclick="switchLanguage('pl')">Polski</button>
+            <button onclick="switchLanguage('fr')">Français</button>
+        </div>
+    </header>
+    <section>
+        <div id="intro-pl" class="intro">
+            <p>Kochani! Jeśli czujecie, że chcielibyście obdarować nas prezentem weselnym i na dłużej pozostać w naszej codzienności...</p>
+            <!-- Treść wstępu PL -->
+        </div>
+        <div id="intro-fr" class="intro" style="display: none;">
+            <p>Chers amis ! Si vous avez envie de nous offrir un cadeau de mariage et de rester presents dans notre quotidien...</p>
+            <!-- Treść wstępu FR -->
+        </div>
+        <div id="gifts-pl" class="gifts">
+            <div class="category">#Gotuj z nami</div>
+            <table>
+                <tr>
+                    <th>Nazwa prezentu</th>
+                    <th>Link</th>
+                    <th>Rezerwacja</th>
+                </tr>
+                <tr>
+                    <td>Zestaw 5 garnków Zwilling</td>
+                    <td><a href="https://www.ceneo.pl/zestaw_garnkow_zwilling" target="_blank">Link</a></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <!-- Dodaj pozostałe wiersze -->
+            </table>
+            <!-- Dodaj kolejne kategorie -->
+        </div>
+        <div id="gifts-fr" class="gifts" style="display: none;">
+            <div class="category">#Cuisine avec nous</div>
+            <table>
+                <tr>
+                    <th>Nom du cadeau</th>
+                    <th>Lien</th>
+                    <th>Réservation</th>
+                </tr>
+                <tr>
+                    <td>Ensemble de 5 casseroles Zwilling</td>
+                    <td><a href="https://www.ceneo.pl/zestaw_garnkow_zwilling" target="_blank">Lien</a></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <!-- Dodaj pozostałe wiersze -->
+            </table>
+            <!-- Dodaj kolejne kategorie -->
+        </div>
+    </section>
+    <footer>
+        <p>Marie i Jan - Dziękujemy za Twoją obecność!</p>
+    </footer>
+    <script>
+        function switchLanguage(lang) {
+            document.querySelectorAll('.intro, .gifts').forEach(el => el.style.display = 'none');
+            document.getElementById('intro-' + lang).style.display = 'block';
+            document.getElementById('gifts-' + lang).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
