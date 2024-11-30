@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista Prezentowa Marie i Jana</title>
+    <!-- CSS styles for the page -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -71,7 +72,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="switchLanguage('pl')">
     <header>
         <h1>Lista Prezentowa Marie i Jana</h1>
         <div class="language-switch">
@@ -81,27 +82,102 @@
     </header>
     <section>
         <div id="intro-pl" class="intro">
-            <p>Kochani! Jeśli czujecie, że chcielibyście obdarować nas prezentem weselnym i na dłużej pozostać w naszej codzienności...</p>
-            <!-- Treść wstępu PL -->
+            <p>"Kochani! Jeśli czujecie, że chcielibyście obdarować nas prezentem weselnym i na dłużej pozostać w naszej codzienności to poniżej znajdziecie listę rzeczy, które przydadzą nam się na ""dobry start"".</p>
+
+            <p>Prezenty podzieliliśmy na kategorie, od kuchni, przez spędzanie czasu wolnego, kończąc na pracach warsztatowych. Będzie nam bardzo miło jeśli wybierzecie przestrzeń w której będziemy mogli Was wspominać.</p>
+
+            <p>Krótka instrukcja obsługi: dla każdej kategorii przypisane są przedmioty. Obok niektórych z nich umieściliśmy orientacyjny link do strony internetowej z dokładnym przedmiotem (znalezienie najkorzystniejszej oferty pozostawiamy już Wam). Natomiast w trzeciej kolumnie poprosimy Was o zaznaczenie ""rezerwacja"". Pomoże to uniknąć sytuacji, gdy z prezentów weselnych rozpakujemy setkę talerzy... chociaż przy pierwszych kłótniach taka liczba mogłaby się przydać...</p>
+
+            <p>Dodatkowo zachęcamy Was do współpracy i składania się w kilka osób.</p>
+
+            <p>Buziaki Marie i Jan</p>
+            <p>PS. Już nie możemy się doczekać wspólnego świętowania z Wami! "</p>		
         </div>
         <div id="intro-fr" class="intro" style="display: none;">
-            <p>Chers amis ! Si vous avez envie de nous offrir un cadeau de mariage et de rester presents dans notre quotidien...</p>
-            <!-- Treść wstępu FR -->
+            <p>"Chers amis ! Si vous avez envie de nous offrir un cadeau de mariage et de rester presents dans notre quotidien, vous trouverez ci-dessous une liste de choses qui pourraient nous être utiles pour un « bon départ ».</p>
+
+            <p>Nous avons divisé les cadeaux en catégories, de la cuisine aux loisirs en passant par le bricolage. Cela nous permetra de re-penser à vous.</p>
+
+            <p>Petit mode d'emploi: pour chaque catégorie, nous avons selectioné quelques articles. À côté de certains d'entre eux, nous avons inclu un lien vers un site web (mais nous vous laissons le soin de trouver la meilleure offre). N'oubliez pas de cocher la case réservée dans la troisième colonne, cela nous évitera de recevoir 200 assiettes... bien qu'avec les premières disputes, cela pourrait s'avérer utile...</p>
+
+            <p>N'hesiter pas à vous mettre à plusieurs pour faire un cadeau commun.</p>
+
+            <p>Bisous, Marie et Jan.</p>
+            <p>PS. Nous nous réjouissons déjà de pouvoir faire la fête avec vous !"</p>						
         </div>
         <div id="gifts-pl" class="gifts">
-            <div class="category">#Gotuj z nami</div>
+            <div class="category">#Gotuj z nami / #Cuisine avec nous</div>
             <table>
                 <tr>
                     <th>Nazwa prezentu</th>
                     <th>Link</th>
-                    <th>Rezerwacja</th>
+                    <th>Rezerwacja/Reservation</th>
                 </tr>
                 <tr>
-                    <td>Zestaw 5 garnków Zwilling</td>
+                    <td>Zestaw 5 garnków Zwilling - model TrueFlow</td>
                     <td><a href="https://www.ceneo.pl/zestaw_garnkow_zwilling" target="_blank">Link</a></td>
                     <td contenteditable="true"></td>
                 </tr>
-                <!-- Dodaj pozostałe wiersze -->
+                <tr>
+                    <td>Zestaw sztućców Piemont Villeroy & Bosch</td>
+                    <td><a href="https://www.ceneo.pl/zestaw_sztuccow_Piemont" target="_blank">Link</a></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Patelnia Kohersen DIAMOND Black Cube 24cm</td>
+                    <td><a href="https://www.ceneo.pl/113806138#tab=click" target="_blank">Link</a></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Zestaw noży</td>
+                    <td></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Robot kuchenny Kenwood</td>
+                    <td><a href="https://www.ceneo.pl/70691111#tab=click" target="_blank">Link</a></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Czajnik z regulacją temperatury Bosch</td>
+                    <td><a href="https://www.ceneo.pl/10248248" target="_blank">Link</a></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Blender KENWOOD Triblade</td>
+                    <td><a href="https://www.ceneo.pl/115742095" target="_blank">Link</a></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Opiekacz Tefal COLLECTION SW852D</td>
+                    <td><a href="https://www.ceneo.pl/36175374#tab=click" target="_blank">Link</a></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Dodatek do opiekacza PANINI</td>
+                    <td><a href="https://www.ceneo.pl/40307889" target="_blank">Link</a></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Garnek żeliwny STAUB 4,2l</td>
+                    <td><a href="https://www.ceneo.pl/103470031" target="_blank">Link</a></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Toster Bosch ComfortLine TAT6A803</td>
+                    <td><a href="https://www.ceneo.pl/49552354#" target="_blank">Link</a></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Kamień do pizzy biscotto</td>
+                    <td></td>
+                    <td contenteditable="true"></td>
+                </tr>
+                <tr>
+                    <td>Serwis obiadowy DALIA złota linia</td>
+                    <td><a href="https://porcelana.pl/serwis-obiadowy-dla-12-osob-44-el-dalia-zlota-linia-3612.html" target="_blank">Link</a></td>
+                    <td contenteditable="true"></td>
+                </tr>
             </table>
             <!-- Dodaj kolejne kategorie -->
         </div>
@@ -115,7 +191,7 @@
                 </tr>
                 <tr>
                     <td>Ensemble de 5 casseroles Zwilling</td>
-                    <td><a href="https://www.ceneo.pl/zestaw_garnkow_zwilling" target="_blank">Lien</a></td>
+                    <td><a href="https://www.ceneo.pl/zestaw_garnkow_zwilling" target="_blank">Voir sur Ceneo</a></td>
                     <td contenteditable="true"></td>
                 </tr>
                 <!-- Dodaj pozostałe wiersze -->
@@ -127,8 +203,11 @@
         <p>Marie i Jan - Dziękujemy za Twoją obecność!</p>
     </footer>
     <script>
+        const elements = document.querySelectorAll('.intro, .gifts');
         function switchLanguage(lang) {
-            document.querySelectorAll('.intro, .gifts').forEach(el => el.style.display = 'none');
+            elements.forEach(el => el.style.display = 'none');
+        document.getElementById('intro-' + lang).style.display = 'block';
+        document.getElementById('gifts-' + lang).style.display = 'block';
             document.getElementById('intro-' + lang).style.display = 'block';
             document.getElementById('gifts-' + lang).style.display = 'block';
         }
