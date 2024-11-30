@@ -91,8 +91,8 @@
         .switch {
             position: relative;
             display: inline-block;
-            width: 140px; /* Szerokość przycisku */
-            height: 30px; /* Wysokość przycisku */
+            width: 150px; /* Zwiększona szerokość przycisku */
+            height: 40px; /* Dopasowana wysokość */
         }
 
         .switch input {
@@ -114,7 +114,7 @@
             display: flex;
             align-items: center;
             justify-content: center; /* Wyśrodkowanie tekstu */
-            font-size: 16px;
+            font-size: 14px; /* Zmniejszona czcionka */
             color: white; /* Kolor tekstu */
             font-weight: bold;
         }
@@ -125,10 +125,11 @@
             height: 32px;
             width: 32px;
             left: 4px;
-            bottom: 4px;
+            top: 4px;
             background-color: white;
             transition: .4s;
             border-radius: 50%;
+            z-index: 2; /* Suwak nad tekstem */
         }
 
         input:checked + .slider {
@@ -136,14 +137,17 @@
         }
 
         input:checked + .slider:before {
-            transform: translateX(80px); /* Przesunięcie suwaka w prawo */
+            transform: translateX(110px); /* Poprawione przesunięcie suwaka */
         }
 
         .status {
             position: relative;
-            z-index: 1; /* Tekst jest widoczny nad przyciskiem */
+            z-index: 1; /* Tekst jest widoczny pod suwakiem */
             pointer-events: none; /* Tekst nie blokuje działania przełącznika */
+            text-align: center;
+            width: 100%; /* Tekst zajmuje całą szerokość przycisku */
         }
+
         /* Koniec stylu przełączonika */
 
         footer {
