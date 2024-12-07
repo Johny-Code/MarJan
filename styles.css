@@ -49,16 +49,13 @@ th, td {
 }
 th:nth-child(1),
 td:nth-child(1) {
-    width: 50%;
+    width: 56%;
 }
 th:nth-child(2),
 td:nth-child(2) {
-    width: 25%;
+    width: 40%;
 }
-th:nth-child(3),
-td:nth-child(3) {
-    width: 25%;
-}
+
 .category {
     max-width: 800px;
     margin: 0 auto;
