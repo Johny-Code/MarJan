@@ -11,12 +11,14 @@ document.addEventListener('DOMContentLoaded', function() {
     function toggleReservation(element) {
         const slider = element.nextElementSibling;
         const status = slider.querySelector('.status');
+        const lang = document.documentElement.lang || 'pl'; // Default to Polish if no language is set
+
         if (element.checked) {
-            status.textContent = "Zarezerwowane";
-            alert("Bardzo dziękujemy, Twój prezent został zarezerwowany!");
+            status.textContent = lang === 'fr' ? "Réservé" : "Zarezerwowane";
+            alert(lang === 'fr' ? "Merci beaucoup, votre cadeau a été réservé!" : "Bardzo dziękujemy, Twój prezent został zarezerwowany!");
         } else {
-            status.textContent = "Dostępny";
-            alert("Twój prezent został zwolniony z rezerwacji.");
+            status.textContent = lang === 'fr' ? "Libre" : "Dostępny";
+            alert(lang === 'fr' ? "Votre cadeau a été libéré de la réservation." : "Twój prezent został zwolniony z rezerwacji.");
         }
     }
 
