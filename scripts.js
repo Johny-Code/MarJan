@@ -21,7 +21,7 @@ function renderGifts(lang) {
         console.error("Element gifts-section nie istnieje. Upewnij się, że jest poprawnie dodany w HTML.");
         return; // Zatrzymaj działanie funkcji, jeśli element nie istnieje
     }
-    
+
     giftsSection.innerHTML = ''; // Wyczyść sekcję przed generowaniem
 
     const dbRef = database.ref('gifts/');
@@ -118,14 +118,25 @@ function toggleReservation(element) {
 
 // Funkcja monitorująca zmiany w bazie danych
 function monitorDatabaseChanges() {
+    let initialLoad = true; // Flaga dla pierwszego załadowania danych
+
     const dbRef = database.ref('gifts/');
     dbRef.on('value', () => {
-        alert("Zaktualizowano dane. Odśwież stronę, aby zobaczyć najnowsze zmiany!");
+        if (initialLoad) {
+            // Pierwsze załadowanie – pomijamy alert
+            initialLoad = false;
+        } else {
+            // Kolejne zmiany – wyświetlamy alert
+            alert("Zaktualizowano dane. Odśwież stronę, aby zobaczyć najnowsze zmiany!");
+        }
     });
 }
 
 // Funkcja zmieniająca język
 function switchLanguage(lang) {
+    const elements = document.querySelectorAll('.intro, .gifts');
+    elements.forEach(el => el.style.display = 'none');
+    document.getElementById('intro-' + lang).style.display = 'block';
     renderGifts(lang);
 }
 
