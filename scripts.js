@@ -11,8 +11,8 @@ const firebaseConfig = {
     measurementId: "G-D4FE1G6XBN"
   };
   
-const app = firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
+firebase.initializeApp(firebaseConfig);
+database = firebase.database();
 
 function writeTestData() {
     const dbRef = database.ref('test/');
