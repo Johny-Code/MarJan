@@ -128,7 +128,6 @@ function monitorDatabaseChanges() {
             initialLoad = false;
         } else {
             // Kolejne zmiany – wyświetlamy alert
-            location.reload()
             alert("Gdzieś na świecie zaktualizowano tę listę prezentową. Odświeżyliśmy ją dla Ciebie ;)");
             location.reload()
         }
@@ -154,11 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
     renderGifts(defaultLang);
     monitorDatabaseChanges();
     
-    const scrollPosition = sessionStorage.getItem('scrollPosition');
-    if (scrollPosition) {
-        window.scrollTo(0, parseInt(scrollPosition, 10));
-        sessionStorage.removeItem('scrollPosition'); // Wyczyść wartość po jej użyciu
-    }
+    setTimeout(() => {
+        const scrollPosition = sessionStorage.getItem('scrollPosition');
+        if (scrollPosition) {
+            window.scrollTo(0, parseInt(scrollPosition, 10));
+            sessionStorage.removeItem('scrollPosition'); // Wyczyść wartość po jej użyciu
+        }
+    }, 0); // Ustawienie pozycji przewijania na koniec cyklu renderowania
 });
 
 // Udostępnianie funkcji globalnie
