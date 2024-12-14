@@ -1,4 +1,3 @@
-
 const firebaseConfig = {
     apiKey: "AIzaSyAGZMjOSeECO8i93vOIGYxoT4I2LbmT6I8",
     authDomain: "lista-prezentowa-marjan.firebaseapp.com",
@@ -10,47 +9,75 @@ const firebaseConfig = {
     measurementId: "G-D4FE1G6XBN"
 };
 
+// Inicjalizacja Firebase
 const app = firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
-// Inicjalizacja danych z Firebase
-function initializeData() {
+// Funkcja generująca dynamiczne tabele na podstawie danych z Firebase
+function renderGifts(lang) {
+    const giftsSection = document.getElementById('gifts-section');
+    giftsSection.innerHTML = ''; // Wyczyść sekcję przed generowaniem
+
     const dbRef = database.ref('gifts/');
-    console.log('Jestem w funkcji initializeData()')
     dbRef.once('value', (snapshot) => {
         const data = snapshot.val();
         if (data) {
-            // Dla każdego prezentu ustaw odpowiedni stan
-            console.log("Data: ", data)
-            for (const category in data) {
-                const gifts = data[category];
-                for (const giftId in gifts) {
-                    if (giftId.startsWith("gift_")) {
-                        const gift = gifts[giftId];
-                        const checkbox = document.querySelector(`input[data-id="${giftId}"]`);
-                        console.log("Checkbox: ", checkbox)
-                        if (!checkbox) {
-                            console.warn(`Checkbox with data-id "${giftId}" not found.`);
-                            continue;
-                        }
-                        if (checkbox) {
-                            checkbox.checked = gift.reserved;
-                            const status = checkbox.nextElementSibling.querySelector('.status');
-                            status.textContent = gift.reserved ? "Zarezerwowane" : "Dostępny";
-                        }
+            for (const categoryId in data) {
+                const category = data[categoryId];
+
+                // Nagłówek kategorii
+                const categoryName = lang === 'fr' ? category.category_name_french : category.category_name_polish;
+                const categoryHeader = document.createElement('div');
+                categoryHeader.className = 'category';
+                categoryHeader.textContent = categoryName;
+                giftsSection.appendChild(categoryHeader);
+
+                // Tworzenie tabeli dla kategorii
+                const table = document.createElement('table');
+                table.setAttribute('data-category-id', categoryId);
+
+                // Dodanie nagłówków tabeli
+                const headerRow = document.createElement('tr');
+                headerRow.innerHTML = `
+                    <th>${lang === 'fr' ? 'Nom du cadeau' : 'Nazwa prezentu'}</th>
+                    <th>${lang === 'fr' ? 'Réservation' : 'Rezerwacja'}</th>
+                `;
+                table.appendChild(headerRow);
+
+                // Dodanie wierszy dla prezentów
+                for (const giftId in category) {
+                    if (giftId.startsWith('gift_')) {
+                        const gift = category[giftId];
+                        const giftName = lang === 'fr' ? gift.name_french : gift.name;
+
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${giftName}</td>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" data-id="${giftId}" onchange="toggleReservation(this)" ${gift.reserved ? 'checked' : ''}>
+                                    <span class="slider">
+                                        <span class="status">${gift.reserved ? (lang === 'fr' ? 'Réservé' : 'Zarezerwowane') : (lang === 'fr' ? 'Libre' : 'Dostępny')}</span>
+                                    </span>
+                                </label>
+                            </td>
+                        `;
+                        table.appendChild(row);
                     }
                 }
+
+                // Dodanie tabeli do sekcji
+                giftsSection.appendChild(table);
             }
         }
     });
 }
 
-// Obsługa zmiany rezerwacji
+// Funkcja obsługująca zmianę stanu rezerwacji
 function toggleReservation(element) {
     try {
-        // Pobieranie danych z elementu
         const giftId = element.dataset.id;
-        const category = element.closest('table')?.dataset.categoryId; // Obsługa potencjalnego braku `data-category-id`
+        const category = element.closest('table')?.dataset.categoryId;
         const reserved = element.checked;
 
         const lang = document.documentElement.lang || 'pl';
@@ -58,13 +85,7 @@ function toggleReservation(element) {
         const status = slider.querySelector('.status');
 
         // Aktualizacja tekstu statusu w interfejsie
-        if (reserved) {
-            status.textContent = lang === 'fr' ? "Réservé" : "Zarezerwowane";
-            alert(lang === 'fr' ? "Merci beaucoup, votre cadeau a été réservé!" : "Bardzo dziękujemy, Twój prezent został zarezerwowany!");
-        } else {
-            status.textContent = lang === 'fr' ? "Libre" : "Dostępny";
-            alert(lang === 'fr' ? "Votre cadeau a été libéré de la réservation." : "Twój prezent został zwolniony z rezerwacji.");
-        }
+        status.textContent = reserved ? (lang === 'fr' ? "Réservé" : "Zarezerwowane") : (lang === 'fr' ? "Libre" : "Dostępny");
 
         // Sprawdzanie poprawności danych przed zapisaniem w Firebase
         if (!giftId || !category) {
@@ -89,8 +110,7 @@ function toggleReservation(element) {
     }
 }
 
-
-// Monitorowanie zmian w bazie danych
+// Funkcja monitorująca zmiany w bazie danych
 function monitorDatabaseChanges() {
     const dbRef = database.ref('gifts/');
     dbRef.on('value', () => {
@@ -98,52 +118,18 @@ function monitorDatabaseChanges() {
     });
 }
 
-function writeTestData() {
-    const dbRef = database.ref('test/');
-    dbRef.set({
-        message: "Hello from GitHub Pages! Jan Dupa"
-    })
-    .then(() => {
-        console.log("Data written successfully. Kupa!");
-    })
-    .catch((error) => {
-        console.error("Error writing data: ", error);
-    });
-}
-
-function readTestData() {
-    const dbRef = database.ref('test/');
-    dbRef.get()
-    .then((snapshot) => {
-        if (snapshot.exists()) {
-            document.getElementById('firebase-data').innerText = snapshot.val().message;
-        } else {
-            console.log("No data available");
-        }
-    })
-    .catch((error) => {
-        console.error("Error fetching data: ", error);
-    });
-}
-
-
-// Funkcja do zmiany języka
+// Funkcja zmieniająca język
 function switchLanguage(lang) {
-    const elements = document.querySelectorAll('.intro, .gifts');
-    elements.forEach(el => el.style.display = 'none');
-    document.getElementById('intro-' + lang).style.display = 'block';
-    document.getElementById('gifts-' + lang).style.display = 'block';
+    renderGifts(lang);
 }
+
+// Inicjalizacja po załadowaniu DOM
+document.addEventListener('DOMContentLoaded', () => {
+    const defaultLang = 'pl'; // Domyślny język
+    renderGifts(defaultLang);
+    monitorDatabaseChanges();
+});
 
 // Udostępnianie funkcji globalnie
+window.toggleReservation = toggleReservation;
 window.switchLanguage = switchLanguage;
-window.toggleReservation = toggleReservation;
-window.toggleReservation = toggleReservation;
-
-// Wykonanie akcji po załadowaniu DOM
-document.addEventListener('DOMContentLoaded', () => {
-    initializeData();
-    monitorDatabaseChanges();
-    writeTestData();
-    readTestData();
-});
