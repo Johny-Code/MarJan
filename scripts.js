@@ -13,6 +13,59 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
+// Inicjalizacja danych z Firebase
+function initializeData() {
+    const dbRef = database.ref('gifts/');
+    dbRef.once('value', (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+            // Dla każdego prezentu ustaw odpowiedni stan
+            for (const category in data) {
+                const gifts = data[category];
+                for (const giftId in gifts) {
+                    if (giftId.startsWith("gift_")) {
+                        const gift = gifts[giftId];
+                        const checkbox = document.querySelector(`input[data-id="${giftId}"]`);
+                        if (checkbox) {
+                            checkbox.checked = gift.reserved;
+                            const status = checkbox.nextElementSibling.querySelector('.status');
+                            status.textContent = gift.reserved ? "Zarezerwowane" : "Dostępny";
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+// Obsługa zmiany rezerwacji
+function toggleReservation(element) {
+    const giftId = element.dataset.id;
+    const category = element.closest('table').dataset.categoryId;
+    const reserved = element.checked;
+
+    const lang = document.documentElement.lang || 'pl';
+    const status = element.nextElementSibling.querySelector('.status');
+    status.textContent = reserved ? (lang === 'fr' ? "Réservé" : "Zarezerwowane") : (lang === 'fr' ? "Libre" : "Dostępny");
+
+    // Aktualizacja w Firebase
+    database.ref(`gifts/${category}/${giftId}/reserved`).set(reserved)
+        .then(() => {
+            alert(lang === 'fr' ? "Votre cadeau a été réservé!" : "Twój prezent został zarezerwowany!");
+        })
+        .catch((error) => {
+            console.error("Error updating reservation: ", error);
+        });
+}
+
+// Monitorowanie zmian w bazie danych
+function monitorDatabaseChanges() {
+    const dbRef = database.ref('gifts/');
+    dbRef.on('value', () => {
+        alert("Zaktualizowano dane. Odśwież stronę, aby zobaczyć najnowsze zmiany!");
+    });
+}
+
 function writeTestData() {
     const dbRef = database.ref('test/');
     dbRef.set({
@@ -71,9 +124,12 @@ function toggleReservation(element) {
 // Udostępnianie funkcji globalnie
 window.switchLanguage = switchLanguage;
 window.toggleReservation = toggleReservation;
+window.toggleReservation = toggleReservation;
 
 // Wykonanie akcji po załadowaniu DOM
 document.addEventListener('DOMContentLoaded', () => {
+    initializeData();
+    monitorDatabaseChanges();
     writeTestData();
     readTestData();
 });
