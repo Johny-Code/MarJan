@@ -147,32 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const defaultLang = 'pl'; // Domyślny język
     renderGifts(defaultLang);
     monitorDatabaseChanges();
-    
-    setTimeout(() => {
-        const scrollPosition = sessionStorage.getItem('scrollPosition');
-        if (scrollPosition) {
-            console.log(`Przywracanie pozycji przewijania: ${scrollPosition}`);
-            window.scrollTo(0, parseInt(scrollPosition, 10));
-            sessionStorage.removeItem('scrollPosition'); // Wyczyść wartość po jej użyciu
-        }
-    }, 500); // Ustawienie pozycji przewijania na koniec cyklu renderowania
 });
 
-// Zapis pozycji przewijania podczas scrollowania
-let scrollTimeout;
-window.addEventListener('scroll', () => {
-    if (scrollTimeout) clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-        sessionStorage.setItem('scrollPosition', window.scrollY);
-    }, 100);
-});
-
-// Zapisywanie pozycji przewijania w momencie przechodzenia do innej strony lub odświeżenia
-document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'hidden') {
-        sessionStorage.setItem('scrollPosition', window.scrollY);
-    }
-});
 
 // Udostępnianie funkcji globalnie
 window.toggleReservation = toggleReservation;
