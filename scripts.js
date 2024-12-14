@@ -1,16 +1,18 @@
+// Konfiguracja Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyAGZMjOSeECO8i93vOIGYxoT4I2LbmT6I8",
     authDomain: "lista-prezentowa-marjan.firebaseapp.com",
+    databaseURL: "https://lista-prezentowa-marjan-default-rtdb.firebaseio.com",
     projectId: "lista-prezentowa-marjan",
-    storageBucket: "lista-prezentowa-marjan.firebasestorage.app",
+    storageBucket: "lista-prezentowa-marjan.appspot.com",
     messagingSenderId: "631667451184",
     appId: "1:631667451184:web:cebd9e98c75f56076054f5",
     measurementId: "G-D4FE1G6XBN"
-  };
-  
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+};
+
+// Inicjalizacja Firebase
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
 
 // Funkcja do testowego zapisu w bazie danych
 function writeTestData() {
