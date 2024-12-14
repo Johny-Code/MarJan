@@ -16,16 +16,19 @@ const database = firebase.database();
 // Inicjalizacja danych z Firebase
 function initializeData() {
     const dbRef = database.ref('gifts/');
+    console.log('Jestem w funkcji initializeData()')
     dbRef.once('value', (snapshot) => {
         const data = snapshot.val();
         if (data) {
             // Dla każdego prezentu ustaw odpowiedni stan
+            console.log("Data: ", data)
             for (const category in data) {
                 const gifts = data[category];
                 for (const giftId in gifts) {
                     if (giftId.startsWith("gift_")) {
                         const gift = gifts[giftId];
                         const checkbox = document.querySelector(`input[data-id="${giftId}"]`);
+                        console.log("Checkbox: ", checkbox)
                         if (checkbox) {
                             checkbox.checked = gift.reserved;
                             const status = checkbox.nextElementSibling.querySelector('.status');
