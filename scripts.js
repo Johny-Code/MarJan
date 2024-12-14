@@ -55,10 +55,11 @@ function renderGifts(lang) {
                     if (giftId.startsWith('gift_')) {
                         const gift = category[giftId];
                         const giftName = lang === 'fr' ? gift.name_french : gift.name;
+                        const giftUrl = gift.url ? `<a href="${gift.url}" target="_blank">[URL]</a>` : '';
 
                         const row = document.createElement('tr');
                         row.innerHTML = `
-                            <td>${giftName}</td>
+                            <td>${giftName} ${giftUrl}</td>
                             <td>
                                 <label class="switch">
                                     <input type="checkbox" data-id="${giftId}" onchange="toggleReservation(this)" ${gift.reserved ? 'checked' : ''}>
