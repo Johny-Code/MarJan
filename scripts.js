@@ -128,8 +128,8 @@ function monitorDatabaseChanges() {
             initialLoad = false;
         } else {
             // Kolejne zmiany – wyświetlamy alert
-            alert("Zaktualizowano dane. Odśwież stronę, aby zobaczyć najnowsze zmiany!");
             location.reload()
+            alert("Gdzieś na świecie zaktualizowano tę listę prezentową. Odświeżyliśmy ją dla Ciebie ;)");
         }
     });
 }
