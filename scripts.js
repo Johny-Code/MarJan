@@ -5,7 +5,7 @@ import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/1
 const firebaseConfig = {
     apiKey: "AIzaSyAGZMjOSeECO8i93vOIGYxoT4I2LbmT6I8",
     authDomain: "lista-prezentowa-marjan.firebaseapp.com",
-    databaseURL: "https://lista-prezentowa-marjan-default-rtdb.firebaseio.com",
+    databaseURL: "https://lista-prezentowa-marjan-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "lista-prezentowa-marjan",
     storageBucket: "lista-prezentowa-marjan.appspot.com",
     messagingSenderId: "631667451184",
