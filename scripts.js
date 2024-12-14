@@ -130,6 +130,7 @@ function monitorDatabaseChanges() {
             // Kolejne zmiany – wyświetlamy alert
             location.reload()
             alert("Gdzieś na świecie zaktualizowano tę listę prezentową. Odświeżyliśmy ją dla Ciebie ;)");
+            location.reload()
         }
     });
 }
@@ -142,11 +143,22 @@ function switchLanguage(lang) {
     renderGifts(lang);
 }
 
+// Zapamiętaj pozycję przewijania przed odświeżeniem
+window.addEventListener('beforeunload', () => {
+    sessionStorage.setItem('scrollPosition', window.scrollY);
+});
+
 // Inicjalizacja po załadowaniu DOM
 document.addEventListener('DOMContentLoaded', () => {
     const defaultLang = 'pl'; // Domyślny język
     renderGifts(defaultLang);
     monitorDatabaseChanges();
+    
+    const scrollPosition = sessionStorage.getItem('scrollPosition');
+    if (scrollPosition) {
+        window.scrollTo(0, parseInt(scrollPosition, 10));
+        sessionStorage.removeItem('scrollPosition'); // Wyczyść wartość po jej użyciu
+    }
 });
 
 // Udostępnianie funkcji globalnie
