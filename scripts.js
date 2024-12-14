@@ -1,4 +1,5 @@
 // scripts.js
+
 document.addEventListener('DOMContentLoaded', function() {
     const elements = document.querySelectorAll('.intro, .gifts');
 
@@ -24,4 +25,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.switchLanguage = switchLanguage;
     window.toggleReservation = toggleReservation;
+});
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAGZMjOSeECO8i93vOIGYxoT4I2LbmT6I8",
+    authDomain: "lista-prezentowa-marjan.firebaseapp.com",
+    projectId: "lista-prezentowa-marjan",
+    storageBucket: "lista-prezentowa-marjan.firebasestorage.app",
+    messagingSenderId: "631667451184",
+    appId: "1:631667451184:web:cebd9e98c75f56076054f5",
+    measurementId: "G-D4FE1G6XBN"
+  };
+  
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+database.ref('test').set({
+    message: "Hello from external JS file!"
 });
