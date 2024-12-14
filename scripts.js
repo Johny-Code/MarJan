@@ -142,9 +142,13 @@ function switchLanguage(lang) {
     renderGifts(lang);
 }
 
-// Zapamiętaj pozycję przewijania przed odświeżeniem
-window.addEventListener('beforeunload', () => {
-    sessionStorage.setItem('scrollPosition', window.scrollY);
+// Zapis pozycji przewijania podczas scrollowania
+let scrollTimeout;
+window.addEventListener('scroll', () => {
+    if (scrollTimeout) clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+        sessionStorage.setItem('scrollPosition', window.scrollY);
+    }, 100);
 });
 
 // Inicjalizacja po załadowaniu DOM
