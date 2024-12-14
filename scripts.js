@@ -16,6 +16,12 @@ const database = firebase.database();
 // Funkcja generująca dynamiczne tabele na podstawie danych z Firebase
 function renderGifts(lang) {
     const giftsSection = document.getElementById('gifts-section');
+
+    if (!giftsSection) {
+        console.error("Element gifts-section nie istnieje. Upewnij się, że jest poprawnie dodany w HTML.");
+        return; // Zatrzymaj działanie funkcji, jeśli element nie istnieje
+    }
+    
     giftsSection.innerHTML = ''; // Wyczyść sekcję przed generowaniem
 
     const dbRef = database.ref('gifts/');
