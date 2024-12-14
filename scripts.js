@@ -13,7 +13,6 @@ if (!firebase.apps.length) {
     const database = firebase.database();
 }
 
-
 function writeTestData() {
     const dbRef = database.ref('test/');
     dbRef.set({
