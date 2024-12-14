@@ -1,6 +1,3 @@
-// scripts.js
-import { get, child } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-
 function readTestData() {
     const dbRef = ref(database);
     get(child(dbRef, 'test/')).then((snapshot) => {
@@ -18,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     writeTestData();
     readTestData();
 });
-
 
 document.addEventListener('DOMContentLoaded', function() {
     const elements = document.querySelectorAll('.intro, .gifts');
