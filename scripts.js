@@ -1,18 +1,19 @@
-// const firebaseConfig = {
-//     apiKey: "AIzaSyAGZMjOSeECO8i93vOIGYxoT4I2LbmT6I8",
-//     authDomain: "lista-prezentowa-marjan.firebaseapp.com",
-//     projectId: "lista-prezentowa-marjan",
-//     storageBucket: "lista-prezentowa-marjan.firebasestorage.app",
-//     messagingSenderId: "631667451184",
-//     appId: "1:631667451184:web:cebd9e98c75f56076054f5",
-//     measurementId: "G-D4FE1G6XBN"
-//   };
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+import { getDatabase } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAGZMjOSeECO8i93vOIGYxoT4I2LbmT6I8",
+    authDomain: "lista-prezentowa-marjan.firebaseapp.com",
+    projectId: "lista-prezentowa-marjan",
+    storageBucket: "lista-prezentowa-marjan.firebasestorage.app",
+    messagingSenderId: "631667451184",
+    appId: "1:631667451184:web:cebd9e98c75f56076054f5",
+    measurementId: "G-D4FE1G6XBN"
+  };
   
-// Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
-// Funkcja do testowego zapisu w bazie danych
 function writeTestData() {
     const dbRef = database.ref('test/');
     dbRef.set({
@@ -24,7 +25,6 @@ function writeTestData() {
     });
 }
 
-// Funkcja do odczytu testowych danych z bazy danych
 function readTestData() {
     const dbRef = database.ref('test/');
     dbRef.get().then((snapshot) => {
@@ -47,7 +47,7 @@ function switchLanguage(lang) {
 function toggleReservation(element) {
     const slider = element.nextElementSibling;
     const status = slider.querySelector('.status');
-    const lang = document.documentElement.lang || 'pl'; // Default to Polish if no language is set
+    const lang = document.documentElement.lang || 'pl'; 
 
     if (element.checked) {
         status.textContent = lang === 'fr' ? "Réservé" : "Zarezerwowane";
@@ -58,12 +58,10 @@ function toggleReservation(element) {
     }
 }
 
+window.switchLanguage = switchLanguage;
+window.toggleReservation = toggleReservation;
+
 document.addEventListener('DOMContentLoaded', () => {
-    const elements = document.querySelectorAll('.intro, .gifts');
-
-    window.switchLanguage = switchLanguage;
-    window.toggleReservation = toggleReservation;
-
     writeTestData();
     readTestData();
 });
