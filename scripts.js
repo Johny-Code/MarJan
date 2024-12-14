@@ -1,11 +1,8 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
-
 // Konfiguracja Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyAGZMjOSeECO8i93vOIGYxoT4I2LbmT6I8",
     authDomain: "lista-prezentowa-marjan.firebaseapp.com",
-    databaseURL: "https://lista-prezentowa-marjan-default-rtdb.europe-west1.firebasedatabase.app",
+    databaseURL: "https://lista-prezentowa-marjan-default-rtdb.firebaseio.com/",
     projectId: "lista-prezentowa-marjan",
     storageBucket: "lista-prezentowa-marjan.appspot.com",
     messagingSenderId: "631667451184",
@@ -13,10 +10,8 @@ const firebaseConfig = {
     measurementId: "G-D4FE1G6XBN"
 };
 
-
-// Inicjalizacja Firebase
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+const app = firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
 
 // Funkcja do zapisu danych w Firebase
 function writeTestData() {
