@@ -55,20 +55,9 @@
                     <td>Zestaw 5 garnków Zwilling - model TrueFlow <a href="https://www.ceneo.pl/zestaw_garnkow_zwilling" target="_blank">[Link]</a></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" onchange="toggleReservation(this)">
-                            <span class="slider">
-                                <span class="status">   Dostępny</span>
-                            </span>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Zestaw 5 garnków Zwilling - model TrueFlow [połączony z bazą danych] <a href="https://www.ceneo.pl/zestaw_garnkow_zwilling" target="_blank">[Link]</a></td>
-                    <td>
-                        <label class="switch">
                             <input type="checkbox" data-id="gift_1" onchange="toggleReservation(this)">
                             <span class="slider">
-                                <span class="status">Dostępny</span>
+                                <span class="status">   Dostępny</span>
                             </span>
                         </label>
                     </td>
@@ -77,7 +66,7 @@
                     <td>Zestaw sztućców Piemont Villeroy & Bosch<a href="https://www.ceneo.pl/zestaw_sztuccow_Piemont" target="_blank">     [Link]</a></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" onchange="toggleReservation(this)">
+                            <input type="checkbox" data-id="gift_2" onchange="toggleReservation(this)">
                             <span class="slider">
                                 <span class="status">Dostępny</span>
                             </span>
@@ -88,7 +77,7 @@
                     <td>Patelnia Kohersen DIAMOND Black Cube 24cm<a href="https://www.ceneo.pl/113806138#tab=click" target="_blank">     [Link]</a></td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" onchange="toggleReservation(this)">
+                            <input type="checkbox" data-id="gift_3" onchange="toggleReservation(this)">
                             <span class="slider">
                                 <span class="status">Dostępny</span>
                             </span>
@@ -208,7 +197,7 @@
             </table>
 
             <div class="category">#Majsterkuj z nami</div>
-                <table>
+                <table data-category-id="category_2">
                     <tr>
                         <th>Nazwa prezentu</th>
                         <th>Rezerwacja</th>
