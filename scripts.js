@@ -1,8 +1,7 @@
-// Konfiguracja Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyAGZMjOSeECO8i93vOIGYxoT4I2LbmT6I8",
     authDomain: "lista-prezentowa-marjan.firebaseapp.com",
-    databaseURL: "https://lista-prezentowa-marjan-default-rtdb.firebaseio.com/",
+    databaseURL: "https://lista-prezentowa-marjan-default-rtdb.europe-west1.firebasedatabase.app/",
     projectId: "lista-prezentowa-marjan",
     storageBucket: "lista-prezentowa-marjan.appspot.com",
     messagingSenderId: "631667451184",
@@ -13,10 +12,9 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
-// Funkcja do zapisu danych w Firebase
 function writeTestData() {
-    const dbRef = ref(database, 'test/');
-    set(dbRef, {
+    const dbRef = database.ref('test/');
+    dbRef.set({
         message: "Hello from GitHub Pages!"
     })
     .then(() => {
@@ -27,10 +25,9 @@ function writeTestData() {
     });
 }
 
-// Funkcja do odczytu danych z Firebase
 function readTestData() {
-    const dbRef = ref(database, 'test/');
-    get(dbRef)
+    const dbRef = database.ref('test/');
+    dbRef.get()
     .then((snapshot) => {
         if (snapshot.exists()) {
             document.getElementById('firebase-data').innerText = snapshot.val().message;
@@ -43,6 +40,7 @@ function readTestData() {
     });
 }
 
+
 // Funkcja do zmiany języka
 function switchLanguage(lang) {
     const elements = document.querySelectorAll('.intro, .gifts');
@@ -51,18 +49,21 @@ function switchLanguage(lang) {
     document.getElementById('gifts-' + lang).style.display = 'block';
 }
 
-// Funkcja do obsługi rezerwacji prezentu
 function toggleReservation(element) {
     const slider = element.nextElementSibling;
     const status = slider.querySelector('.status');
     const lang = document.documentElement.lang || 'pl';
 
-    if (element.checked) {
-        status.textContent = lang === 'fr' ? "Réservé" : "Zarezerwowane";
-        alert(lang === 'fr' ? "Merci beaucoup, votre cadeau a été réservé!" : "Bardzo dziękujemy, Twój prezent został zarezerwowany!");
-    } else {
-        status.textContent = lang === 'fr' ? "Libre" : "Dostępny";
-        alert(lang === 'fr' ? "Votre cadeau a été libéré de la réservation." : "Twój prezent został zwolniony z rezerwacji.");
+    try {
+        if (element.checked) {
+            status.textContent = lang === 'fr' ? "Réservé" : "Zarezerwowane";
+            alert(lang === 'fr' ? "Merci beaucoup, votre cadeau a été réservé!" : "Bardzo dziękujemy, Twój prezent został zarezerwowany!");
+        } else {
+            status.textContent = lang === 'fr' ? "Libre" : "Dostępny";
+            alert(lang === 'fr' ? "Votre cadeau a été libéré de la réservation." : "Twój prezent został zwolniony z rezerwacji.");
+        }
+    } catch (error) {
+        console.error("Error handling reservation toggle: ", error);
     }
 }
 
