@@ -1,6 +1,19 @@
+// Funkcja do testowego zapisu w bazie danych
+function writeTestData() {
+    const dbRef = database.ref('test/');
+    dbRef.set({
+        message: "Hello from GitHub Pages!"
+    }).then(() => {
+        console.log("Data written successfully.");
+    }).catch((error) => {
+        console.error("Error writing data: ", error);
+    });
+}
+
+// Funkcja do odczytu testowych danych z bazy danych
 function readTestData() {
-    const dbRef = ref(database);
-    get(child(dbRef, 'test/')).then((snapshot) => {
+    const dbRef = database.ref('test/');
+    dbRef.get().then((snapshot) => {
         if (snapshot.exists()) {
             document.getElementById('firebase-data').innerText = snapshot.val().message;
         } else {
