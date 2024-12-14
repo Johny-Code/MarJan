@@ -29,6 +29,10 @@ function initializeData() {
                         const gift = gifts[giftId];
                         const checkbox = document.querySelector(`input[data-id="${giftId}"]`);
                         console.log("Checkbox: ", checkbox)
+                        if (!checkbox) {
+                            console.warn(`Checkbox with data-id "${giftId}" not found.`);
+                            continue;
+                        }
                         if (checkbox) {
                             checkbox.checked = gift.reserved;
                             const status = checkbox.nextElementSibling.querySelector('.status');
@@ -43,23 +47,48 @@ function initializeData() {
 
 // Obsługa zmiany rezerwacji
 function toggleReservation(element) {
-    const giftId = element.dataset.id;
-    const category = element.closest('table').dataset.categoryId;
-    const reserved = element.checked;
+    try {
+        // Pobieranie danych z elementu
+        const giftId = element.dataset.id;
+        const category = element.closest('table')?.dataset.categoryId; // Obsługa potencjalnego braku `data-category-id`
+        const reserved = element.checked;
 
-    const lang = document.documentElement.lang || 'pl';
-    const status = element.nextElementSibling.querySelector('.status');
-    status.textContent = reserved ? (lang === 'fr' ? "Réservé" : "Zarezerwowane") : (lang === 'fr' ? "Libre" : "Dostępny");
+        const lang = document.documentElement.lang || 'pl';
+        const slider = element.nextElementSibling;
+        const status = slider.querySelector('.status');
 
-    // Aktualizacja w Firebase
-    database.ref(`gifts/${category}/${giftId}/reserved`).set(reserved)
-        .then(() => {
-            alert(lang === 'fr' ? "Votre cadeau a été réservé!" : "Twój prezent został zarezerwowany!");
-        })
-        .catch((error) => {
-            console.error("Error updating reservation: ", error);
-        });
+        // Aktualizacja tekstu statusu w interfejsie
+        if (reserved) {
+            status.textContent = lang === 'fr' ? "Réservé" : "Zarezerwowane";
+            alert(lang === 'fr' ? "Merci beaucoup, votre cadeau a été réservé!" : "Bardzo dziękujemy, Twój prezent został zarezerwowany!");
+        } else {
+            status.textContent = lang === 'fr' ? "Libre" : "Dostępny";
+            alert(lang === 'fr' ? "Votre cadeau a été libéré de la réservation." : "Twój prezent został zwolniony z rezerwacji.");
+        }
+
+        // Sprawdzanie poprawności danych przed zapisaniem w Firebase
+        if (!giftId || !category) {
+            console.error("Brak giftId lub categoryId. Nie można zapisać w Firebase.");
+            return;
+        }
+
+        // Aktualizacja Firebase
+        database.ref(`gifts/${category}/${giftId}/reserved`).set(reserved)
+            .then(() => {
+                console.log("Zaktualizowano stan rezerwacji w Firebase:", {
+                    giftId,
+                    category,
+                    reserved
+                });
+            })
+            .catch((error) => {
+                console.error("Błąd podczas zapisywania danych w Firebase:", error);
+            });
+    } catch (error) {
+        console.error("Error handling reservation toggle:", error);
+    }
 }
+
 
 // Monitorowanie zmian w bazie danych
 function monitorDatabaseChanges() {
@@ -104,24 +133,6 @@ function switchLanguage(lang) {
     elements.forEach(el => el.style.display = 'none');
     document.getElementById('intro-' + lang).style.display = 'block';
     document.getElementById('gifts-' + lang).style.display = 'block';
-}
-
-function toggleReservation(element) {
-    const slider = element.nextElementSibling;
-    const status = slider.querySelector('.status');
-    const lang = document.documentElement.lang || 'pl';
-
-    try {
-        if (element.checked) {
-            status.textContent = lang === 'fr' ? "Réservé" : "Zarezerwowane";
-            alert(lang === 'fr' ? "Merci beaucoup, votre cadeau a été réservé!" : "Bardzo dziękujemy, Twój prezent został zarezerwowany!");
-        } else {
-            status.textContent = lang === 'fr' ? "Libre" : "Dostępny";
-            alert(lang === 'fr' ? "Votre cadeau a été libéré de la réservation." : "Twój prezent został zwolniony z rezerwacji.");
-        }
-    } catch (error) {
-        console.error("Error handling reservation toggle: ", error);
-    }
 }
 
 // Udostępnianie funkcji globalnie
