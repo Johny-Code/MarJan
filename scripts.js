@@ -122,13 +122,14 @@ function monitorDatabaseChanges() {
     let initialLoad = true; // Flaga dla pierwszego załadowania danych
 
     const dbRef = database.ref('gifts/');
-    dbRef.on('value', () => {
+    dbRef.on('value', (snapshot) => {
         if (initialLoad) {
             // Pierwsze załadowanie – pomijamy alert
             initialLoad = false;
         } else {
             // Kolejne zmiany – wyświetlamy alert
             alert("Zaktualizowano dane. Odśwież stronę, aby zobaczyć najnowsze zmiany!");
+            location.reload()
         }
     });
 }
