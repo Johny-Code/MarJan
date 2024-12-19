@@ -136,7 +136,7 @@ function monitorDatabaseChanges() {
 
 // Funkcja zmieniająca język
 function switchLanguage(lang) {
-    const elements = document.querySelectorAll('.intro, .gifts, .footer, .header');
+    const elements = document.querySelectorAll('.intro, .gifts, .footer, .header_title');
     elements.forEach(el => el.style.display = 'none');
     document.getElementById('intro-' + lang).style.display = 'block';
     document.getElementById('gifts-' + lang).style.display = 'block';
