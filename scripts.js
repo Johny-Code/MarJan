@@ -139,6 +139,9 @@ function switchLanguage(lang) {
     const elements = document.querySelectorAll('.intro, .gifts, .footer, .header');
     elements.forEach(el => el.style.display = 'none');
     document.getElementById('intro-' + lang).style.display = 'block';
+    document.getElementById('gifts-' + lang).style.display = 'block';
+    document.getElementById('footer-' + lang).style.display = 'block';
+    document.getElementById('header-' + lang).style.display = 'block';
     renderGifts(lang);
 }
 
