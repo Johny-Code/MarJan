@@ -1,4 +1,4 @@
-import { firebaseConfig } from './firebaseConfig.js';
+import { firebaseConfig } from 'scripts/firebaseConfig.js';
 
 // Inicjalizacja Firebase
 const app = firebase.initializeApp(firebaseConfig);
