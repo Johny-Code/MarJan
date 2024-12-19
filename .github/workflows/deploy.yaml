@@ -8,6 +8,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment: github-pages
 
     steps:
     - name: Checkout repository
@@ -18,7 +19,7 @@ jobs:
 
     - name: Generate Firebase config
       run: |
-        echo "const firebaseConfig = {
+        echo "export const firebaseConfig = {
             apiKey: '${{ secrets.FIREBASE_API_KEY }}',
             authDomain: '${{ secrets.FIREBASE_AUTH_DOMAIN }}',
             databaseURL: '${{ secrets.FIREBASE_DATABASE_URL }}',
@@ -27,8 +28,7 @@ jobs:
             messagingSenderId: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}',
             appId: '${{ secrets.FIREBASE_APP_ID }}',
             measurementId: '${{ secrets.FIREBASE_MEASUREMENT_ID }}'
-        };
-        export default firebaseConfig;" > scripts/firebaseConfig.js
+        };" > scripts/firebaseConfig.js
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
