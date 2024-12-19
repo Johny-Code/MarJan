@@ -127,12 +127,38 @@ function monitorDatabaseChanges() {
 
 // Funkcja zmieniająca język
 function switchLanguage(lang) {
-    const elements = document.querySelectorAll('.intro, .gifts, .footer_text, .header_title');
-    elements.forEach(el => el.style.display = 'none');
-    document.getElementById('intro-' + lang).style.display = 'block';
-    document.getElementById('gifts-' + lang).style.display = 'block';
-    document.getElementById('footer_text-' + lang).style.display = 'block';
-    document.getElementById('header_title-' + lang).style.display = 'block';
+    const elements = [
+        document.getElementById('intro-' + lang),
+        document.getElementById('gifts-' + lang),
+        document.getElementById('footer_text-' + lang),
+        document.getElementById('header_title-' + lang)
+    ];
+
+    elements.forEach(el => {
+        if (el) {
+            el.style.display = 'block'; // Show the element
+        } else {
+            console.warn(`Element for language ${lang} not found.`);
+        }
+    });
+
+    // Hide other elements
+    const otherLang = lang === 'pl' ? 'fr' : 'pl';
+    const otherElements = [
+        document.getElementById('intro-' + otherLang),
+        document.getElementById('gifts-' + otherLang),
+        document.getElementById('footer_text-' + otherLang),
+        document.getElementById('header_title-' + otherLang)
+    ];
+
+    otherElements.forEach(el => {
+        if (el) {
+            el.style.display = 'none'; // Hide the element
+        } else {
+            console.warn(`Element for language ${otherLang} not found.`);
+        }
+    });
+
     renderGifts(lang);
 }
 
