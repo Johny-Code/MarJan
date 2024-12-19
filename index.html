@@ -13,7 +13,7 @@
 <body onload="switchLanguage('pl')">
     <header>
         <h1 id="title-pl" class="header">Lista Prezentowa Marie i Jana</h1>
-        <h1 id="title-fr" class="header">Liste de Mariage de Marie et Jan</h1>
+        <h1 id="title-fr" class="header" style="display: none;">Liste de Mariage de Marie et Jan</h1>
         <div class="language-switch">
             <button onclick="switchLanguage('pl')">Polski</button>
             <button onclick="switchLanguage('fr')">Français</button>
@@ -48,7 +48,7 @@
     <section id="gifts-section"></section> 
     <footer>
         <div id="footer-pl" class="footer">Marie i Jan - Dziękujemy za Twoją obecność!</div>
-        <div id="footer-fr" class="footer">Marie et Jan - Merci pour votre présence!</div>
+        <div id="footer-fr" class="footer" style="display: none;">Marie et Jan - Merci pour votre présence!</div>
     </footer>
     <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js"></script>
