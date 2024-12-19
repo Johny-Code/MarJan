@@ -136,12 +136,12 @@ function monitorDatabaseChanges() {
 
 // Funkcja zmieniająca język
 function switchLanguage(lang) {
-    const elements = document.querySelectorAll('.intro, .gifts, .footer, .header_title');
+    const elements = document.querySelectorAll('.intro, .gifts, .footer_text, .header_title');
     elements.forEach(el => el.style.display = 'none');
     document.getElementById('intro-' + lang).style.display = 'block';
     document.getElementById('gifts-' + lang).style.display = 'block';
-    document.getElementById('footer-' + lang).style.display = 'block';
-    document.getElementById('header-' + lang).style.display = 'block';
+    document.getElementById('footer_text-' + lang).style.display = 'block';
+    document.getElementById('header_title-' + lang).style.display = 'block';
     renderGifts(lang);
 }
 
