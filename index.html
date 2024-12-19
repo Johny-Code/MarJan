@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista Prezentowa Marie i Jana</title>
-    <link rel="icon" href="images/gift.png" type="image/png">
+    <link rel="icon" href="images/gift-box.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
     <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database-compat.js"></script>
@@ -12,13 +12,8 @@
 </head>
 <body onload="switchLanguage('pl')">
     <header>
-        <div id="header_title-pl" class="header_title">
-            <h1>Lista Prezentowa Marie i Jana</h1>
-        </div>
-        
-        <div id="header_title-fr" class="header_title" style="display: none;">
-            <h1>Liste de Mariage de Marie et Jan</h1>
-        </div>
+        <h1 id="header_title-pl" class="header_title">Lista Prezentowa Marie i Jana</h1>
+        <h1 id="header_title-fr" class="header_title" style="display: none;">Liste de Mariage de Marie et Jan</h1>
 
         <div class="language-switch">
             <button onclick="switchLanguage('pl')">Polski</button>
@@ -53,8 +48,8 @@
     </section>   
     <section id="gifts-section"></section> 
     <footer>
-        <div id="footer_text-pl" class="footer_text">Marie i Jan - Dziękujemy za Twoją obecność!</div>
-        <div id="footer_text-fr" class="footer_text" style="display: none;">Marie et Jan - Merci pour votre présence!</div>
+        <p id="footer_text-pl" class="footer_text">Marie i Jan - Dziękujemy za Twoją obecność!</p>
+        <p id="footer_text-fr" class="footer_text" style="display: none;">Marie et Jan - Merci pour votre présence!</p>
     </footer>
     <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js"></script>
