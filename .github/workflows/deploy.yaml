@@ -25,7 +25,7 @@ jobs:
             appId: '${{ secrets.FIREBASE_APP_ID }}',
             measurementId: '${{ secrets.FIREBASE_MEASUREMENT_ID }}'
         };
-        export default firebaseConfig;" > scripts/firebaseConfig.js
+        export default firebaseConfig;" > scripts.js
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
