@@ -31,7 +31,6 @@ function switchLanguage(language) {
 
 function renderGifts(lang){
     // Get the section to render the gifts
-    let lang = localStorage.getItem('current_language') || 'pl'; // Default to 'pl'
     const giftsSection = document.getElementById('gifts-section');
 
     giftsSection.innerHTML = ''; // Wyczyść sekcję przed generowaniem
