@@ -41,9 +41,8 @@ function switchLanguage(language) {
 function renderGifts(lang){
     // Get the section to render the gifts
     const giftsSection = document.getElementById('gifts-section');
-
     giftsSection.innerHTML = ''; // Wyczyść sekcję przed generowaniem
-
+    
     const dbRef = database.ref('gifts/');
 
     dbRef.once('value', (snapshot) => {
