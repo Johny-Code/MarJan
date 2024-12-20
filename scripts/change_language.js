@@ -47,6 +47,7 @@ function renderGifts(lang){
 
     dbRef.once('value', (snapshot) => {
         const data = snapshot.val();
+        console.log('Fetched data:', data); // Debugging line to check fetched data
         if (data) {
             for (const categoryId in data) {
                 const category = data[categoryId];
