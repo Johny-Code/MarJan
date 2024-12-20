@@ -15,6 +15,7 @@ const database = firebase.database();
 
 // Variable to store the current language
 let current_language = localStorage.getItem('current_language') || 'pl'; // Default to 'pl'
+let initialLoad = true; // Flaga dla pierwszego załadowania danych
 
 // Function to switch language
 function switchLanguage(language) {
@@ -129,6 +130,9 @@ function toggleReservation(element) {
                     category,
                     reserved
                 });
+                alert(reserved 
+                    ? (lang === 'fr' ? "Cadeau réservé avec succès !" : "Prezent zarezerwowany pomyślnie!") 
+                    : (lang === 'fr' ? "Réservation annulée avec succès !" : "Rezerwacja anulowana pomyślnie!"));
             })
             .catch((error) => {
                 console.error("Błąd podczas zapisywania danych w Firebase:", error);
@@ -140,7 +144,6 @@ function toggleReservation(element) {
 
 // Funkcja monitorująca zmiany w bazie danych
 function monitorDatabaseChanges(currentLang) {
-    let initialLoad = true; // Flaga dla pierwszego załadowania danych
 
     const dbRef = database.ref('gifts/');
     dbRef.on('value', (snapshot) => {
@@ -162,7 +165,6 @@ function monitorDatabaseChanges(currentLang) {
 // Initialize the page with the saved language preference
 document.addEventListener('DOMContentLoaded', function () {
     switchLanguage(current_language);
-    renderGifts(current_language);
     monitorDatabaseChanges(currentLang);
 });
 
