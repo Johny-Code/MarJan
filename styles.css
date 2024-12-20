@@ -117,7 +117,7 @@ td:nth-child(2) {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #a3db80;
+    background-color: #90a959;
     transition: .4s;
     border-radius: 20px;
     display: flex;
@@ -140,7 +140,7 @@ td:nth-child(2) {
     z-index: 2;
 }
 input:checked + .slider {
-    background-color: #b72b2bd3;
+    background-color: #a63d40;
 }
 input:checked + .slider:before {
     transform: translateX(360%);
