@@ -7,7 +7,7 @@ const database = firebase.database();
 // Get the section to render the gifts
 const giftsSection = document.getElementById('gifts-section');
 
-function renderGifts() {
+function renderGifts() {{
     giftsSection.innerHTML = `
         <div>
             <table>
@@ -26,7 +26,7 @@ function renderGifts() {
             </table>
         </div>
     `;
-}
+}}
 
 document.addEventListener('DOMContentLoaded', () => {
     renderGifts();
