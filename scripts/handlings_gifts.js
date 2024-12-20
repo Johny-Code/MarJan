@@ -30,4 +30,4 @@ function renderGifts() {
 
 document.addEventListener('DOMContentLoaded', () => {
     renderGifts();
-
+});
