@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Prezentowa Marie i Jana</title>
+    <link rel="icon" href="images/page/gift-box.png" type="image/png">
+    
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app-compat.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database-compat.js"></script>
+    <script src="scripts/background_images.js" defer></script>
+    <script src="scripts/change_language.js" defer></script>
+</head>
+<body onload="switchLanguage('pl')">
+    <header>
+        
+        <div class="bgimg">
+            <h1 id="header_title-pl" class="header_title">Lista Prezentowa Marie i Jana</h1>
+            <h1 id="header_title-fr" class="header_title" style="display: none;">Liste de Mariage de Marie et Jan</h1>
+        </div>
+
+        <div class="language-switch">
+            <button onclick="switchLanguage('pl')">Polski</button>
+            <button onclick="switchLanguage('fr')">Français</button>
+        </div>
+    </header>
+    <section>
+        <div id="intro-pl" class="intro">
+            <p>Kochani! Jeśli czujecie, że chcielibyście obdarować nas prezentem weselnym i na dłużej pozostać w naszej codzienności to poniżej znajdziecie listę rzeczy, które przydadzą nam się na <i>'dobry start'</i>.</p>
+
+            <p>Prezenty podzieliliśmy na kategorie, od kuchni, przez spędzanie czasu wolnego, kończąc na pracach warsztatowych. Będzie nam bardzo miło jeśli wybierzecie przestrzeń w której będziemy mogli Was wspominać.</p>
+
+            <p>Krótka instrukcja obsługi: dla każdej kategorii przypisane są przedmioty. Obok niektórych z nich umieściliśmy orientacyjny link do strony internetowej z dokładnym przedmiotem (znalezienie najkorzystniejszej oferty pozostawiamy już Wam). Natomiast w drugiej kolumnie poprosimy Was o zaznaczenie 'rezerwacja'. Pomoże to uniknąć sytuacji, gdy z prezentów weselnych rozpakujemy setkę talerzy... chociaż przy pierwszych kłótniach taka liczba mogłaby się przydać...</p>
+
+            <p>Dodatkowo zachęcamy Was do współpracy i składania się w kilka osób.</p>
+
+            <p>Buziaki Marie i Jan</p>
+            <p>PS. Już nie możemy się doczekać wspólnego świętowania z Wami!</p>		
+        </div>
+        <div id="intro-fr" class="intro" style="display: none;">
+            <p>Chers amis ! Si vous avez envie de nous offrir un cadeau de mariage et de rester presents dans notre quotidien, vous trouverez ci-dessous une liste de choses qui pourraient nous être utiles pour un « bon départ ».</p>
+
+            <p>Nous avons divisé les cadeaux en catégories, de la cuisine aux loisirs en passant par le bricolage. Cela nous permetra de re-penser à vous.</p>
+
+            <p>Petit mode d'emploi: pour chaque catégorie, nous avons selectioné quelques articles. À côté de certains d'entre eux, nous avons inclu un Lien vers un site web (mais nous vous laissons le soin de trouver la meilleure offre). N'oubliez pas de cocher la case réservée dans la deuxième colonne, cela nous évitera de recevoir 200 assiettes... bien qu'avec les premières disputes, cela pourrait s'avérer utile...</p>
+
+            <p>N'hesiter pas à vous mettre à plusieurs pour faire un cadeau commun.</p>
+
+            <p>Bisous, Marie et Jan.</p>
+            <p>PS. Nous nous réjouissons déjà de pouvoir faire la fête avec vous !</p>						
+        </div>
+    </section>   
+    <section id="gifts-section">
+        
+    </section> 
+    <footer>
+        <p id="footer_text-pl" class="footer_text">Marie i Jan - Dziękujemy za Twoją obecność!</p>
+        <p id="footer_text-fr" class="footer_text" style="display: none;">Marie et Jan - Merci pour votre présence!</p>
+    </footer>
+</body>
+</html>
