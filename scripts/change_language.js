@@ -33,10 +33,8 @@ function switchLanguage(language) {
     document.getElementById('footer_text-pl').style.display = language === 'pl' ? 'block' : 'none';
     document.getElementById('footer_text-fr').style.display = language === 'fr' ? 'block' : 'none';
 
-    // Trigger the renderGifts function to re-render gifts
-    if (typeof renderGifts === 'function') {
-        renderGifts(current_language);
-    }
+    renderGifts(current_language);
+    
 }
 
 function renderGifts(lang){
@@ -103,18 +101,17 @@ function renderGifts(lang){
 }
 
 // Funkcja obsługująca zmianę stanu rezerwacji
-function toggleReservation(element) {
+function toggleReservation(element, current_language) {
     try {
         const giftId = element.dataset.id;
         const category = element.closest('table')?.dataset.categoryId;
         const reserved = element.checked;
 
-        const lang = document.documentElement.lang || 'pl';
         const slider = element.nextElementSibling;
         const status = slider.querySelector('.status');
 
         // Aktualizacja tekstu statusu w interfejsie
-        status.textContent = reserved ? (lang === 'fr' ? "Réservé" : "Zarezerwowane") : (lang === 'fr' ? "Libre" : "Dostępny");
+        status.textContent = reserved ? (current_language === 'fr' ? "Réservé" : "Zarezerwowane") : (current_language === 'fr' ? "Libre" : "Dostępny");
 
         // Sprawdzanie poprawności danych przed zapisaniem w Firebase
         if (!giftId || !category) {
