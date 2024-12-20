@@ -1,11 +1,28 @@
 import { firebaseConfig } from './scripts/firebaseConfig.js';
 
+// Funkcja do przełączania rezerwacji
+function toggleReservation(checkbox) {
+    const giftId = checkbox.getAttribute('data-id');
+    const reserved = checkbox.checked;
+    const statusSpan = checkbox.nextElementSibling.querySelector('.status');
+    const lang = document.documentElement.lang; // Assuming the language is set in the HTML tag
+
+    // Aktualizacja statusu w Firebase
+    const updates = {};
+    updates[`/gifts/${giftId}/reserved`] = reserved;
+    firebase.database().ref().update(updates);
+
+    // Aktualizacja tekstu statusu
+    statusSpan.textContent = reserved ? (lang === 'fr' ? 'Réservé' : 'Zarezerwowane') : (lang === 'fr' ? 'Libre' : 'Dostępny');
+}
+
 // Inicjalizacja Firebase
 const app = firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
+const giftsSection = document.getElementById('gifts-section');
+
 function renderGifts(lang) {
-    const giftsSection = document.getElementById('gifts-section');
 
     if (!giftsSection) {
         console.error("Element gifts-section nie istnieje. Upewnij się, że jest poprawnie dodany w HTML.");
@@ -14,7 +31,7 @@ function renderGifts(lang) {
 
     giftsSection.innerHTML = ''; // Wyczyść sekcję przed generowaniem
 
-    const dbRef = database.ref('gifts/');
+    dbRef.limitToFirst(10).once('value', (snapshot) => {
     dbRef.once('value', (snapshot) => {
         const data = snapshot.val();
         if (data) {
@@ -22,7 +39,7 @@ function renderGifts(lang) {
                 const category = data[categoryId];
 
                 // Nagłówek kategorii
-                const categoryName = lang === 'fr' ? category.category_name_french : category.category_name_polish;
+                const categoryName = lang === 'fr' ? (category.category_name_french || 'Unknown Category') : (category.category_name_polish || 'Nieznana Kategoria');
                 const categoryHeader = document.createElement('div');
                 categoryHeader.className = 'category';
                 categoryHeader.textContent = categoryName;
@@ -68,4 +85,5 @@ function renderGifts(lang) {
             }
         }
     });
+  });
 }
