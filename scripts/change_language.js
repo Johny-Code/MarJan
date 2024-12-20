@@ -1,3 +1,5 @@
+import { renderGifts } from './handlings_gifts.js';
+
 // Variable to store the current language
 let current_language = localStorage.getItem('current_language') || 'pl'; // Default to 'pl'
 
