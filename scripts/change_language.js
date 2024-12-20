@@ -101,11 +101,72 @@ function renderGifts(lang){
      });
 }
 
+// Funkcja obsługująca zmianę stanu rezerwacji
+function toggleReservation(element) {
+    try {
+        const giftId = element.dataset.id;
+        const category = element.closest('table')?.dataset.categoryId;
+        const reserved = element.checked;
+
+        const lang = document.documentElement.lang || 'pl';
+        const slider = element.nextElementSibling;
+        const status = slider.querySelector('.status');
+
+        // Aktualizacja tekstu statusu w interfejsie
+        status.textContent = reserved ? (lang === 'fr' ? "Réservé" : "Zarezerwowane") : (lang === 'fr' ? "Libre" : "Dostępny");
+
+        // Sprawdzanie poprawności danych przed zapisaniem w Firebase
+        if (!giftId || !category) {
+            console.error("Brak giftId lub categoryId. Nie można zapisać w Firebase.");
+            return;
+        }
+
+        // Aktualizacja Firebase
+        database.ref(`gifts/${category}/${giftId}/reserved`).set(reserved)
+            .then(() => {
+                console.log("Zaktualizowano stan rezerwacji w Firebase:", {
+                    giftId,
+                    category,
+                    reserved
+                });
+            })
+            .catch((error) => {
+                console.error("Błąd podczas zapisywania danych w Firebase:", error);
+            });
+    } catch (error) {
+        console.error("Error handling reservation toggle:", error);
+    }
+}
+
+// Funkcja monitorująca zmiany w bazie danych
+function monitorDatabaseChanges(lang) {
+    let initialLoad = true; // Flaga dla pierwszego załadowania danych
+
+    const dbRef = database.ref('gifts/');
+    dbRef.on('value', (snapshot) => {
+        if (initialLoad) {
+            // Pierwsze załadowanie – pomijamy alert
+            initialLoad = false;
+        } else {
+            // Kolejne zmiany – wyświetlamy alert
+            if (lang === 'pl') {
+                alert("Gdzieś na świecie zaktualizowano tę listę prezentową. Odświeżyliśmy ją dla Ciebie ;)");
+            } else {
+                alert("Quelque part dans le monde, cette liste de cadeaux a été mise à jour. Nous l'avons actualisée pour vous ;)");
+            }
+            location.reload()
+        }
+    });
+}
+
 // Initialize the page with the saved language preference
 document.addEventListener('DOMContentLoaded', function () {
     switchLanguage(current_language);
     renderGifts(current_language);
+    monitorDatabaseChanges(currentLang);
 });
 
-
+// Udostępnianie funkcji globalnie
+window.toggleReservation = toggleReservation;
+window.switchLanguage = switchLanguage;
 
