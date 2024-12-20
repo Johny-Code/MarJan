@@ -76,8 +76,8 @@ function renderGifts(lang){
                      if (giftId.startsWith('gift_')) {
                          const gift = category[giftId];
                          const giftName = lang === 'fr' ? gift.name_french : gift.name;
-                         const giftUrl = gift.url ? `<a href="${gift.url}" target="_blank">[URL]</a>` : '';
- 
+                         const giftUrl = gift.url ? `<a href="${gift.url}" target="_blank">[${lang === 'fr' ? 'lien' : 'link'}]</a>` : '';
+
                          const row = document.createElement('tr');
                          row.innerHTML = `
                              <td>${giftName} ${giftUrl}</td>
@@ -139,7 +139,7 @@ function toggleReservation(element) {
 }
 
 // Funkcja monitorująca zmiany w bazie danych
-function monitorDatabaseChanges(lang) {
+function monitorDatabaseChanges(currentLang) {
     let initialLoad = true; // Flaga dla pierwszego załadowania danych
 
     const dbRef = database.ref('gifts/');
@@ -149,7 +149,7 @@ function monitorDatabaseChanges(lang) {
             initialLoad = false;
         } else {
             // Kolejne zmiany – wyświetlamy alert
-            if (lang === 'pl') {
+            if (currentLang === 'pl') {
                 alert("Gdzieś na świecie zaktualizowano tę listę prezentową. Odświeżyliśmy ją dla Ciebie ;)");
             } else {
                 alert("Quelque part dans le monde, cette liste de cadeaux a été mise à jour. Nous l'avons actualisée pour vous ;)");
