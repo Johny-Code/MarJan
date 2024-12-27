@@ -1,24 +1,24 @@
 document.addEventListener('DOMContentLoaded', function () {
     const imagePaths = [
-        "images/background_desktop/1.png",
-        "images/background_desktop/2.png",
-        "images/background_desktop/3.png",
-        "images/background_desktop/4.png",
-        "images/background_desktop/5.png",
-        "images/background_desktop/6.png",
-        "images/background_desktop/7.png",
-        "images/background_desktop/8.png"
+        "images/background_desktop/1.jpg",
+        "images/background_desktop/2.jpg",
+        "images/background_desktop/3.jpg",
+        "images/background_desktop/4.jpg",
+        "images/background_desktop/5.jpg",
+        "images/background_desktop/6.jpg",
+        "images/background_desktop/7.jpg",
+        "images/background_desktop/8.jpg"
     ];
 
     const imagePathsMobile = [
-        "images/background_mobile/1.png",
-        "images/background_mobile/2.png",
-        "images/background_mobile/3.png",
-        "images/background_mobile/4.png",
-        "images/background_mobile/5.png",
-        "images/background_mobile/6.png",
-        "images/background_mobile/7.png",
-        "images/background_mobile/8.png"
+        "images/background_mobile/1.jpg",
+        "images/background_mobile/2.jpg",
+        "images/background_mobile/3.jpg",
+        "images/background_mobile/4.jpg",
+        "images/background_mobile/5.jpg",
+        "images/background_mobile/6.jpg",
+        "images/background_mobile/7.jpg",
+        "images/background_mobile/8.jpg"
     ];
     
     let currentImageIndex = 0;
