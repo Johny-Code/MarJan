@@ -16,6 +16,7 @@ const database = firebase.database();
 // Variable to store the current language
 let current_language = localStorage.getItem('current_language') || 'pl'; // Default to 'pl'
 let initialLoad = true; // Flaga dla pierwszego załadowania danych
+let isChanging = false
 
 // Function to switch language
 function switchLanguage(language) {
@@ -25,19 +26,23 @@ function switchLanguage(language) {
     // Save the language preference in localStorage
     localStorage.setItem('current_language', language);
 
-    // Toggle visibility of language-specific content
-    document.getElementById('header_title-pl').style.display = language === 'pl' ? 'block' : 'none';
-    document.getElementById('header_title-fr').style.display = language === 'fr' ? 'block' : 'none';
-    document.getElementById('intro-pl').style.display = language === 'pl' ? 'block' : 'none';
-    document.getElementById('intro-fr').style.display = language === 'fr' ? 'block' : 'none';
-    document.getElementById('footer_text-pl').style.display = language === 'pl' ? 'block' : 'none';
-    document.getElementById('footer_text-fr').style.display = language === 'fr' ? 'block' : 'none';
+    initLanguage()
 
-    renderGifts(current_language);
+    renderGifts();
     
 }
 
-function renderGifts(lang){
+const initLanguage = () => {
+    // Toggle visibility of language-specific content
+    document.getElementById('header_title-pl').style.display = current_language === 'pl' ? 'block' : 'none';
+    document.getElementById('header_title-fr').style.display = current_language === 'fr' ? 'block' : 'none';
+    document.getElementById('intro-pl').style.display = current_language === 'pl' ? 'block' : 'none';
+    document.getElementById('intro-fr').style.display = current_language === 'fr' ? 'block' : 'none';
+    document.getElementById('footer_text-pl').style.display = current_language === 'pl' ? 'block' : 'none';
+    document.getElementById('footer_text-fr').style.display = current_language === 'fr' ? 'block' : 'none';
+}
+
+function renderGifts(){
     // Get the section to render the gifts
     const giftsSection = document.getElementById('gifts-section');
     giftsSection.innerHTML = ''; // Wyczyść sekcję przed generowaniem
@@ -52,7 +57,7 @@ function renderGifts(lang){
                 const category = data[categoryId];
 
                 // Nagłówek kategorii
-                const categoryName = lang === 'fr' ? category.category_name_french : category.category_name_polish;
+                const categoryName = current_language === 'fr' ? category.category_name_french : category.category_name_polish;
                 const categoryHeader = document.createElement('div');
                 categoryHeader.className = 'category';
                 categoryHeader.textContent = categoryName;
@@ -65,8 +70,8 @@ function renderGifts(lang){
                  // Dodanie nagłówków tabeli
                  const headerRow = document.createElement('tr');
                  headerRow.innerHTML = `
-                     <th>${lang === 'fr' ? 'Nom du cadeau' : 'Nazwa prezentu'}</th>
-                     <th>${lang === 'fr' ? 'Réservation' : 'Rezerwacja'}</th>
+                     <th class="header-row">${current_language === 'fr' ? 'Nom du cadeau' : 'Nazwa prezentu'}</th>
+                     <th class="header-row">${current_language === 'fr' ? 'Réservation' : 'Rezerwacja'}</th>
                  `;
                  table.appendChild(headerRow);
  
@@ -74,21 +79,28 @@ function renderGifts(lang){
                  for (const giftId in category) {
                      if (giftId.startsWith('gift_')) {
                          const gift = category[giftId];
-                         const giftName = lang === 'fr' ? gift.name_french : gift.name;
-                         const giftUrl = gift.url ? `<a href="${gift.url}" target="_blank">[${lang === 'fr' ? 'lien' : 'link'}]</a>` : '';
+                         const giftName = current_language === 'fr' ? gift.name_french : gift.name;
+                         const giftUrl = gift.url ? `<a href="${gift.url}" target="_blank">[${current_language === 'fr' ? 'lien' : 'link'}]</a>` : '';
 
                          const row = document.createElement('tr');
-                         row.innerHTML = `
+                         if (gift.reservable === false) {
+                            row.innerHTML = `
                              <td>${giftName} ${giftUrl}</td>
-                             <td>
-                                 <label class="switch">
-                                     <input type="checkbox" data-id="${giftId}" onchange="toggleReservation(this)" ${gift.reserved ? 'checked' : ''}>
-                                     <span class="slider">
-                                         <span class="status">${gift.reserved ? (lang === 'fr' ? 'Réservé' : 'Zarezerwowane') : (lang === 'fr' ? 'Libre' : 'Dostępny')}</span>
-                                     </span>
-                                 </label>
-                             </td>
-                         `;
+                             <td>${current_language === 'fr' ? 'en toute quantité ;)' : 'w dowolnej ilości ;)'}</td>
+                             `;
+                         } else {
+                            row.innerHTML = `
+                                <td>${giftName} ${giftUrl}</td>
+                                <td>
+                                    <label class="switch">
+                                        <input type="checkbox" data-id="${giftId}" onchange="toggleReservation(this)" ${gift.reserved ? 'checked' : ''}>
+                                        <span class="slider">
+                                            <span class="status">${gift.reserved ? (current_language === 'fr' ? 'Réservé' : 'Zarezerwowane') : (current_language === 'fr' ? 'Libre' : 'Dostępny')}</span>
+                                        </span>
+                                    </label>
+                                </td>
+                            `;
+                        }
                          table.appendChild(row);
                      }
                  }
@@ -101,7 +113,7 @@ function renderGifts(lang){
 }
 
 // Funkcja obsługująca zmianę stanu rezerwacji
-function toggleReservation(element, current_language) {
+function toggleReservation(element) {
     try {
         const giftId = element.dataset.id;
         const category = element.closest('table')?.dataset.categoryId;
@@ -120,6 +132,7 @@ function toggleReservation(element, current_language) {
         }
 
         // Aktualizacja Firebase
+        isChanging=true
         database.ref(`gifts/${category}/${giftId}/reserved`).set(reserved)
             .then(() => {
                 console.log("Zaktualizowano stan rezerwacji w Firebase:", {
@@ -127,9 +140,14 @@ function toggleReservation(element, current_language) {
                     category,
                     reserved
                 });
-                alert(reserved 
-                    ? (lang === 'fr' ? "Cadeau réservé avec succès !" : "Prezent zarezerwowany pomyślnie!") 
-                    : (lang === 'fr' ? "Réservation annulée avec succès !" : "Rezerwacja anulowana pomyślnie!"));
+                
+                isChanging=false
+
+                setTimeout(() => {
+                    alert(reserved 
+                        ? (current_language === 'fr' ? "Cadeau réservé avec succès !" : "Prezent zarezerwowany pomyślnie!") 
+                        : (current_language === 'fr' ? "Réservation annulée avec succès !" : "Rezerwacja anulowana pomyślnie!"));
+                }, 100)
             })
             .catch((error) => {
                 console.error("Błąd podczas zapisywania danych w Firebase:", error);
@@ -140,16 +158,16 @@ function toggleReservation(element, current_language) {
 }
 
 // Funkcja monitorująca zmiany w bazie danych
-function monitorDatabaseChanges(currentLang) {
-
+function monitorDatabaseChanges() {
     const dbRef = database.ref('gifts/');
     dbRef.on('value', (snapshot) => {
+        if(isChanging) return
         if (initialLoad) {
             // Pierwsze załadowanie – pomijamy alert
             initialLoad = false;
         } else {
             // Kolejne zmiany – wyświetlamy alert
-            if (currentLang === 'pl') {
+            if (current_language === 'pl') {
                 alert("Gdzieś na świecie zaktualizowano tę listę prezentową. Odświeżyliśmy ją dla Ciebie ;)");
             } else {
                 alert("Quelque part dans le monde, cette liste de cadeaux a été mise à jour. Nous l'avons actualisée pour vous ;)");
@@ -161,8 +179,9 @@ function monitorDatabaseChanges(currentLang) {
 
 // Initialize the page with the saved language preference
 document.addEventListener('DOMContentLoaded', function () {
-    switchLanguage(current_language);
-    monitorDatabaseChanges(currentLang);
+    monitorDatabaseChanges();
+    initLanguage()
+    renderGifts()
 });
 
 // Udostępnianie funkcji globalnie
