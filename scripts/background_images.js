@@ -11,14 +11,14 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
 
     const imagePathsMobile = [
-        "images/background_mobile/1.jpg",
-        "images/background_mobile/2.jpg",
-        "images/background_mobile/3.jpg",
-        "images/background_mobile/4.jpg",
-        "images/background_mobile/5.jpg",
-        "images/background_mobile/6.jpg",
-        "images/background_mobile/7.jpg",
-        "images/background_mobile/8.jpg"
+        "images/background_mobile/1.png",
+        "images/background_mobile/2.png",
+        "images/background_mobile/3.png",
+        "images/background_mobile/4.png",
+        "images/background_mobile/5.png",
+        "images/background_mobile/6.png",
+        "images/background_mobile/7.png",
+        "images/background_mobile/8.png"
     ];
     
     let currentImageIndex = 0;
