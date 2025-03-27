@@ -26,6 +26,10 @@ const initLanguage = () => {
     document.getElementById('close-surrodings-pl').style.display = current_language === 'pl' ? 'block' : 'none';
     document.getElementById('close-surrodings-fr').style.display = current_language === 'fr' ? 'block' : 'none';
 
+    // close-surrodings-img-fr
+    document.getElementById('close-surrodings-img-pl').style.display = current_language === 'pl' ? 'block' : 'none';
+    document.getElementById('close-surrodings-img-fr').style.display = current_language === 'fr' ? 'block' : 'none';
+
     document.getElementById('further-surrodings-pl').style.display = current_language === 'pl' ? 'block' : 'none';
     document.getElementById('further-surrodings-fr').style.display = current_language === 'fr' ? 'block' : 'none';
 
