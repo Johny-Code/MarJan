@@ -23,18 +23,26 @@ const initLanguage = () => {
     document.getElementById('Cieszyn-pl').style.display = current_language === 'pl' ? 'block' : 'none';
     document.getElementById('Cieszyn-fr').style.display = current_language === 'fr' ? 'block' : 'none'; 
 
+    document.getElementById('close-surrodings-image-title-pl').style.display = current_language === 'pl' ? 'block' : 'none';
+    document.getElementById('close-surrodings-image-title-fr').style.display = current_language === 'fr' ? 'block' : 'none';
+
     document.getElementById('close-surrodings-pl').style.display = current_language === 'pl' ? 'block' : 'none';
     document.getElementById('close-surrodings-fr').style.display = current_language === 'fr' ? 'block' : 'none';
 
-    // close-surrodings-img-fr
-    document.getElementById('close-surrodings-img-pl').style.display = current_language === 'pl' ? 'block' : 'none';
-    document.getElementById('close-surrodings-img-fr').style.display = current_language === 'fr' ? 'block' : 'none';
+    document.getElementById('further-surroundings-title-pl').style.display = current_language === 'pl' ? 'block' : 'none';
+    document.getElementById('further-surroundings-title-fr').style.display = current_language === 'fr' ? 'block' : 'none';
 
-    document.getElementById('further-surrodings-pl').style.display = current_language === 'pl' ? 'block' : 'none';
-    document.getElementById('further-surrodings-fr').style.display = current_language === 'fr' ? 'block' : 'none';
+    document.getElementById('further-surroundings-pl').style.display = current_language === 'pl' ? 'block' : 'none';
+    document.getElementById('further-surroundings-fr').style.display = current_language === 'fr' ? 'block' : 'none';
+    
+    document.getElementById('mountain-trails-title-pl').style.display = current_language === 'pl' ? 'block' : 'none';
+    document.getElementById('mountain-trails-title-fr').style.display = current_language === 'fr' ? 'block' : 'none';
 
     document.getElementById('mountain-trails-pl').style.display = current_language === 'pl' ? 'block' : 'none';
     document.getElementById('mountain-trails-fr').style.display = current_language === 'fr' ? 'block' : 'none';
+
+    document.getElementById('restaurants-title-pl').style.display = current_language === 'pl' ? 'block' : 'none';
+    document.getElementById('restaurants-title-fr').style.display = current_language === 'fr' ? 'block' : 'none';
 
     document.getElementById('restaurants-pl').style.display = current_language === 'pl' ? 'block' : 'none';
     document.getElementById('restaurants-fr').style.display = current_language === 'fr' ? 'block' : 'none';
