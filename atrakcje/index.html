@@ -3,71 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atrakcje w okolicy sali weselnej</title>
+    <title>Atrakcje Cieszyn</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/page/mountain.png" type="image/png">
+    <script src="change_language.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>Atrakcje w okolicy sali weselnej</h1>
+        <div class="language-switch">
+            <button onclick="switchLanguage('pl')">Polski</button>
+            <button onclick="switchLanguage('fr')">Français</button>
+        </div>
     </header>
     <section>
-        <div>
-            <h1>Wstęp</h1>
-            <p> tu będzie wstęp tu będzie wstęp tu będzie wstęp </p>
+        <div id="intro-pl">
+            <!-- <h2>Kochani!</h2> -->
+            <p>Nasz ślub zbliża się już wielkimi krokami. Dziękujemy za potwierdzenie Waszej obecności. Z tego miejsca chcielibyśmy Was zachęcić do zaplanowania dłuższego pobytu w okolicach Cieszyna. Atrakcji jest wiele, każdy znajdzie coś dla siebie.</p>
+        </div>
+        <div id="intro-fr" style="display: none;">
+            <!-- <h2>Chers amis !</h2> -->
+            <p>Notre mariage approche à grands pas. Merci pour votre confirmation de présence. Nous aimerions vous encourager à planifier un séjour plus long dans les environs de Cieszyn. Il y a beaucoup d'attractions, chacun trouvera quelque chose pour lui.</p>
         </div>
     </section>
     <section>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nazwa atrakcji</th>
-                    <th>Lokalizacja</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td><a href="https://visitcieszyn.com/odkryj-cieszyn-w-jeden-dzien" target="_blank">Spacer po starówce w Cieszynie</a></td><td>Cieszyn</td></tr>
-                <tr><td>Rynek</td><td>Cieszyn</td></tr>
-                <tr><td>Wzgórze Zamkowe - Rotunda św. Mikołaja / Wieża</td><td>Cieszyn</td></tr>
-                <tr><td>Most Przyjaźni - tramwaj cieszyński</td><td>Cieszyn</td></tr>
-                <tr><td>Wenecja Cieszyńska</td><td>Cieszyn</td></tr>
-                <tr><td>Madonna na starym targu</td><td>Cieszyn</td></tr>
-                <tr><td>Teatr Adama Mickiewicza</td><td>Cieszyn</td></tr>
-                <tr><td><a href="http://www.muzeumdrukarstwa.pl/?md=cennik" target="_blank">Muzeum Drukarstwa</a></td><td>Cieszyn</td></tr>
-                <tr><td><a href="https://www.muzeumcieszyn.pl/" target="_blank">Muzeum Śląska Cieszyńskiego</a></td><td>Cieszyn</td></tr>
-
-                <tr><td><a href="https://www.chlebowachata.pl/#cookieagree" target="_blank">Chlebowa Chata</a></td><td>Bliższe okolice</td></tr>
-                <tr><td><a href="https://centrumkoronkikoniakowskiej.pl/muzeum/" target="_blank">Muzeum Koronki w Koniakowie</a></td><td>Bliższe okolice</td></tr>
-                <tr><td><a href="https://parklinowy.pl/" target="_blank">Park Linowy</a></td><td>Bliższe okolice</td></tr>
-                <tr><td><a href="https://lesnypark.pl/" target="_blank">Leśny Park Niespodzianek</a></td><td>Bliższe okolice</td></tr>
-                <tr><td><a href="https://szczyrksanktuarium.pl/" target="_blank">Sanktuarium w Szczyrku</a></td><td>Bliższe okolice</td></tr>
-                <tr><td><a href="https://www.golebiewski.pl/wisla/park-wodny" target="_blank">Aquapark Gołębiewski</a></td><td>Bliższe okolice</td></tr>
-                <tr><td><a href="https://www.wisla.pl/mieszkaniec/skocznia-narciarska-im-adama-malysza-w-wisle-malince" target="_blank">Skocznia Małysza</a></td><td>Bliższe okolice</td></tr>
-                <tr><td><a href="https://www.sfr.pl/" target="_blank">Studio Filmów Rysunkowych w Bielsku-Białej</a></td><td>Bliższe okolice</td></tr>
-                <tr><td><a href="https://muzeum.bielsko.pl/pl/historia-muzeum-zamek" target="_blank">Muzeum Historyczne w Bielsku-Białej</a></td><td>Bliższe okolice</td></tr>
-                <tr><td><a href="https://slaskie.travel/culturalheritage/7169" target="_blank">Trójstyk</a></td><td>Bliższe okolice</td></tr>
-
-                <tr><td><a href="https://zatorland.pl/" target="_blank">Zatorland - Park Ruchomych Dinozaurów</a></td><td>Dalsze okolice</td></tr>
-                <tr><td><a href="https://energylandia.pl/" target="_blank">Energylandia</a></td><td>Dalsze okolice</td></tr>
-                <tr><td><a href="https://www.auschwitz.org/" target="_blank">Auschwitz</a></td><td>Dalsze okolice</td></tr>
-                <tr><td><a href="https://www.muzeumtatra.cz/index.php" target="_blank">Muzeum Tatra Koprivnice</a></td><td>Dalsze okolice</td></tr>
-                <!-- Dodaj pozostałe atrakcje analogicznie -->
-            </tbody>
-        </table>
-
-        <h2>Cieszyn</h2>
+        <div id="Cieszyn-pl">
+        <img src="../images/atractions/Cieszyn.jpg" alt="Cieszyn" class="cieszyn-photo">
+        <!-- <h2>Cieszyn</h2> -->
+         <h2></h2>
+       
         <ul>
             <li><a href="https://visitcieszyn.com/odkryj-cieszyn-w-jeden-dzien" target="_blank">Spacer po starówce w Cieszynie</a></li>
-            <li>Rynek</li>
-            <li>Wzgórze Zamkowe - Rotunda św. Mikołaja / Wieża</li>
-            <li>Most Przyjaźni - tramwaj cieszyński</li>
-            <li>Wenecja Cieszyńska</li>
-            <li>Madonna na starym targu</li>
-            <li>Teatr Adama Mickiewicza</li>
+                <ul id="walk-Cieszyn--ul-pl">
+                    <li>Rynek</li>
+                    <li>Wzgórze Zamkowe - Rotunda św. Mikołaja / Wieża</li>
+                    <li>Most Przyjaźni - tramwaj cieszyński</li>
+                    <li>Wenecja Cieszyńska</li>
+                    <li>Madonna na starym targu</li>
+                    <li>Teatr Adama Mickiewicza</li>
+                </ul>
+                
             <li><a href="http://www.muzeumdrukarstwa.pl/?md=cennik" target="_blank">Muzeum Drukarstwa</a></li>
             <li><a href="https://www.muzeumcieszyn.pl/" target="_blank">Muzeum Śląska Cieszyńskiego</a></li>
         </ul>
+    </div>
+    
+    <div id="Cieszyn-fr" style="display: none;">
+        <h2>Cieszyn</h2>
+        <img src="images/atractions/Cieszyn.jpg" alt="Cieszyn" class="cieszyn-photo">
+        <ul>
+            <li><a href="https://visitcieszyn.com/odkryj-cieszyn-w-jeden-dzien" target="_blank">Promenade dans la vieille ville de Cieszyn</a></li>
+                <ul id="walk-Cieszyn--ul-fr">
+                    <li>Place du marché</li>
+                    <li>Colline du château - Rotonde de Saint-Nicolas / Tour</li>
+                    <li>Pont de l'Amitié - tramway de Cieszyn</li>
+                    <li>Venise de Cieszyn</li>
+                    <li>Madone sur l'ancien marché</li>
+                    <li>Théâtre Adam Mickiewicz</li>
+                </ul>
+                
+            <li><a href="http://www.muzeumdrukarstwa.pl/?md=cennik" target="_blank">Musée de l'imprimerie</a></li>
+            <li><a href="https://www.muzeumcieszyn.pl/" target="_blank">Musée de la Silésie de Cieszyn</a></li>
+        </ul>
+    </div>
+    </section>
 
+    <section>
+        <div id="close-surrodings-pl">
         <h2>Bliższe okolice</h2>
         <ul>
             <li><a href="https://www.chlebowachata.pl/#cookieagree" target="_blank">Chlebowa Chata</a></li>
@@ -81,7 +82,26 @@
             <li><a href="https://muzeum.bielsko.pl/pl/historia-muzeum-zamek" target="_blank">Muzeum Historyczne w Bielsku-Białej</a></li>
             <li><a href="https://slaskie.travel/culturalheritage/7169" target="_blank">Trójstyk</a></li>
         </ul>
-
+    </div>
+    <div id="close-surrodings-fr" style="display: none;">
+        <h2>Environs proches</h2>
+        <ul>
+            <li><a href="https://www.chlebowachata.pl/#cookieagree" target="_blank">Chlebowa Chata</a></li>
+            <li><a href="https://centrumkoronkikoniakowskiej.pl/muzeum/" target="_blank">Musée de la dentelle à Koniaków</a></li>
+            <li><a href="https://parklinowy.pl/" target="_blank">Parc d'escalade</a></li>
+            <li><a href="https://lesnypark.pl/" target="_blank">Parc forestier des surprises</a></li>
+            <li><a href="https://szczyrksanktuarium.pl/" target="_blank">Sanctuaire à Szczyrk</a></li>
+            <li><a href="https://www.golebiewski.pl/wisla/park-wodny" target="_blank">Aquapark Gołębiewski</a></li>
+            <li><a href="https://www.wisla.pl/mieszkaniec/skocznia-narciarska-im-adama-malysza-w-wisle-malince" target="_blank">Le tremplin de Małysz</a></li>
+            <li><a href="https://www.sfr.pl/" target="_blank">Studio de films d'animation à Bielsko-Biała</a></li>
+            <li><a href="https://muzeum.bielsko.pl/pl/historia-muzeum-zamek" target="_blank">Musée historique de Bielsko-Biała</a></li>
+            <li><a href="https://slaskie.travel/culturalheritage/7169" target="_blank">Tripoint</a></li>
+        </ul>
+    </div>
+    </section>
+    
+    <section>
+        <div id="further-surrodings-pl">
         <h2>Dalsze okolice</h2>
         <ul>
             <li><a href="https://zatorland.pl/" target="_blank">Zatorland - Park Ruchomych Dinozaurów</a></li>
@@ -96,11 +116,116 @@
             <li><a href="https://domjp2.pl/" target="_blank">Muzeum Jana Pawła II w Wadowicach</a></li>
             <li><a href="https://zamek-pszczyna.pl/" target="_blank">Zamek w Pszczynie</a></li>
             <li><a href="https://www.zoo-ostrava.cz/pl/" target="_blank">Zoo w Ostravie</a></li>
+            <li><a href="https://kopalniaguido.pl/index.php" target="_blank">Kopalnia Guido</a></li>
+            <li><a href="https://www.archeoparkchotebuz.cz/pl/" target="_blank">Archeopark Chociebuż</a></li>
+            <li><a href="https://muzeumognia.zory.pl/#section3" target="_blank">Żory- Muzeum pożarnictwa</a></li>
+            <li><a href="https://krakow.travel/" target="_blank">Kraków</a></li>
+            <li><a href="https://www.kopalnia.pl/" target="_blank">Wieliczka</a></li>
         </ul>
-
-        <footer>
-            <p>Życzymy Wam miłego pobytu!</p>
-        </footer>
+        </div>
+        <div id="further-surrodings-fr" style="display: none;">
+        <h2>Environs plus lointains</h2>
+        <ul>
+            <li><a href="https://zatorland.pl/" target="_blank">Zatorland - Parc des Dinosaures</a></li>
+            <li><a href="https://energylandia.pl/" target="_blank">Energylandia</a></li>
+            <li><a href="https://www.auschwitz.org/" target="_blank">Auschwitz</a></li>
+            <li><a href="https://www.muzeumtatra.cz/index.php" target="_blank">Musée Tatra à Koprivnice</a></li>
+            <li><a href="https://www.podrozepokulturze.pl/2019/10/sztramberk-stramberk-czechy-morawy-co-zobaczyc-zwiedzic-atrakcje-zabytki-truba-sztramberskie-uszy-zamek-wieza-widokowa/" target="_blank">Stramberk</a></li>
+            <li><a href="https://www.hradhukvaldy.eu/hrad-hukvaldy/polsky-jazyk/" target="_blank">Hukvaldy</a></li>
+            <li><a href="https://beskidy.travel/poioffer/108" target="_blank">Lac Żywieckie (paddle boarding)</a></li>
+            <li><a href="https://muzeum-zywiec.pl/" target="_blank">Musée de la ville de Żywiec</a></li>
+            <li><a href="https://muzeumbrowaru.pl/pl/muzeum/" target="_blank">Brasserie à Żywiec</a></li>
+            <li><a href="https://domjp2.pl/" target="_blank">Musée Jean-Paul II à Wadowice</a></li>
+            <li><a href="https://zamek-pszczyna.pl/" target="_blank">Château à Pszczyna</a></li>
+            <li><a href="https://www.zoo-ostrava.cz/pl/" target="_blank">Zoo à Ostrava</a></li>
+            <li><a href="https://kopalniaguido.pl/index.php" target="_blank">Mine Guido</a></li>
+            <li><a href="https://www.archeoparkchotebuz.cz/pl/" target="_blank">Archeopark Chociebuż</a></li>
+            <li><a href="https://muzeumognia.zory.pl/#section3" target="_blank">Żory- Musée des pompiers</a></li>
+            <li><a href="https://krakow.travel/" target="_blank">Cracovie</a></li>
+            <li><a href="https://www.kopalnia.pl/" target="_blank">Wieliczka</a></li>
+        </ul>
+        </div>
+    </section>
+    <section>
+        <div id="mountain-trails-pl">
+        <h2>Trasy górskie</h2>
+        <ul>
+            <li>Łatwa trasa: <a href="https://mapa-turystyczna.pl/route/32c9b" target="_blank"> Kubalonka- przełęcz pod szarculą- stecówka</a> 1: 52h; 6,3 km</li>
+            <li>Łatwa trasa: <a href="https://mapa-turystyczna.pl/route/32cls" target="_blank"> Sanktuarium Szczyrk- klimczok</a> 2:50h; 8,2 km</li>
+            <li>Średnia trasa: <a href="https://mapa-turystyczna.pl/route/3h6p4" target="_blank"> Szczyrk-schronisko PTTK</a> 3:50h; 10,5 km</li>
+            <li>Średnia trasa: <a href="https://mapa-turystyczna.pl/route/32cln" target="_blank"> Bystra-szyndzielnia-klimczok</a> 4:40h; 13,3 km</li>
+            <li>Trudna trasa: <a href="https://mapa-turystyczna.pl/route/32clc" target="_blank"> Brenna- Kotarz - Grabowa</a> 5:03h; 15,8 km</li>
+            <li>Trudna trasa: <a href="https://mapa-turystyczna.pl/route/3z6ts" target="_blank">Przełęcz Krowiarki- Babia Góra- schronisko Markowe Szczawiny</a> 4:44h; 13,9 km</li>
+        </ul>
+        </div>
+        <div id="mountain-trails-fr" style="display: none;">
+        <h2>Itinéraires de montagne</h2>
+        <ul>
+            <li>Itinéraire facile: <a href="https://mapa-turystyczna.pl/route/32c9b" target="_blank"> Kubalonka- przełęcz pod szarculą- stecówka</a> 1: 52h; 6,3 km</li>
+            <li>Itinéraire facile: <a href="https://mapa-turystyczna.pl/route/32cls" target="_blank"> Sanktuarium Szczyrk- klimczok</a> 2:50h; 8,2 km</li>
+            <li>Itinéraire moyen: <a href="https://mapa-turystyczna.pl/route/3h6p4" target="_blank"> Szczyrk-schronisko PTTK</a> 3:50h; 10,5 km</li>
+            <li>Itinéraire moyen: <a href="https://mapa-turystyczna.pl/route/32cln" target="_blank"> Bystra-szyndzielnia-klimczok</a> 4:40h; 13,3 km</li>
+            <li>Itinéraire difficile: <a href="https://mapa-turystyczna.pl/route/32clc" target="_blank"> Brenna- Kotarz - Grabowa</a> 5:03h; 15,8 km</li>
+            <li>Itinéraire difficile: <a href="https://mapa-turystyczna.pl/route/3z6ts" target="_blank">Przełęcz Krowiarki- Babia Góra- schronisko Markowe Szczawiny</a> 4:44h; 13,9 km</li>
+        </ul>
+        </div>
+    </section>
+    <section>
+        <div id="restaurants-pl">
+        <h2>Restauracje i miejsca warte odwiedzenia</h2>
+        <ul>
+            <li>Cieszyn</li>
+            <ul>
+                <li><a href="https://www.facebook.com/profile.php?id=61552092385183" target="_blank">Mare Fuori</a></li>
+                <li><a href="https://winowajcy.com.pl/" target="_blank">Winowajcy</a></li>
+                <li><a href="https://kamienica-konczakowskich.pl/" target="_blank">Kamienica Kończakowskich</a></li>
+                <li><a href="http://www.zapiecek.cieszyn.pl/" target="_blank">Bar mleczny Zapiecek</a></li>
+                <li><a href="https://cafemuzeumcieszyn.eatbu.com/?lang=pl" target="_blank">Cafe Muzeum</a></li>
+                <li><a href="https://www.facebook.com/korneliprzyjaciele/?locale=pl_PL" target="_blank">Kornel i Przyjaciele</a></li>
+                <li><a href="https://www.facebook.com/Tramwaj.Cafe/?locale=pl_PL" target="_blank">Tramwaj Cafe</a></li>
+            </ul>
+            <li>Górski klimat</li>
+            <ul>
+                <li><a href="https://dworskibowki.pl/" target="_blank">Skibówka</a></li>
+                <li><a href="https://dworkukuczka.pl/" target="_blank">Dwór Kukuczka</a></li>
+                <li><a href="https://www.ochodzita.com.pl/" target="_blank">Karczma Ochodzita</a></li>
+                <li><a href="https://olimpijczyk.wisla.pl/" target="_blank">Chata Olimpijczyka</a></li>
+            </ul>
+            <li>Najlepsza ryba w Twoim życiu</li>
+            <ul>
+                <li><a href="https://www.facebook.com/rybarnajablunkov/?locale=pl_PL" target="_blank">Rybárna Stern</a></li>
+            </ul>
+        </ul>
+        </div>
+        <div id="restaurants-fr" style="display: none;">
+        <h2>Restaurants et lieux à visiter</h2>
+        <ul>
+            <li>Cieszyn</li>
+            <ul>
+                <li><a href="https://www.facebook.com/profile.php?id=61552092385183" target="_blank">Mare Fuori</a></li>
+                <li><a href="https://winowajcy.com.pl/" target="_blank">Winowajcy</a></li>
+                <li><a href="https://kamienica-konczakowskich.pl/" target="_blank">Kamienica Kończakowskich</a></li>
+                <li><a href="http://www.zapiecek.cieszyn.pl/" target="_blank">Bar mleczny Zapiecek</a></li>
+                <li><a href="https://cafemuzeumcieszyn.eatbu.com/?lang=pl" target="_blank">Cafe Muzeum</a></li>
+                <li><a href="https://www.facebook.com/korneliprzyjaciele/?locale=pl_PL" target="_blank">Kornel i Przyjaciele</a></li>
+                <li><a href="https://www.facebook.com/Tramwaj.Cafe/?locale=pl_PL" target="_blank">Tramwaj Cafe</a></li>
+        </ul>
+        <li>Atmosphère montagnarde</li>
+        <ul>
+            <li><a href="https://dworskibowki.pl/" target="_blank">Skibówka</a></li>
+            <li><a href="https://dworkukuczka.pl/" target="_blank">Dwór Kukuczka</a></li>
+            <li><a href="https://www.ochodzita.com.pl/" target="_blank">Karczma Ochodzita</a></li>
+            <li><a href="https://olimpijczyk.wisla.pl/" target="_blank">Chata Olimpijczyka</a></li>
+        </ul>
+        <li>Le meilleur poisson de ta vie</li>
+        <ul>
+            <li><a href="https://www.facebook.com/rybarnajablunkov/?locale=pl_PL" target="_blank">Rybárna Stern</a></li>
+        </ul>
+        </div>
+    </section>
+    <section style="text-align: center;">
+            <p id="footer-text-pl">Życzymy Wam miłego pobytu!</p>
+            <p id="footer-text-fr" style="display: none;">Nous vous souhaitons un bon séjour!</p>
     </section>
 </body>
 </html>
