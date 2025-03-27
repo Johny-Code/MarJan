@@ -50,12 +50,12 @@ ul li {
 }
 
 ul li a {
-    color: #1e175b;
-    text-decoration: none;
+    color: #333;
+    text-decoration: underline;
 }
 
 ul li a:hover {
-    text-decoration: underline;
+    color: #757474;
 }
 
 table {
