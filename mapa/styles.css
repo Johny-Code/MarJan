@@ -188,4 +188,10 @@ footer {
         box-shadow: none;
         border-radius: 0;
     }
+
+    .language-switch {
+        top: 10px;
+        left: 10px;
+        right: auto;
+    }
 }
