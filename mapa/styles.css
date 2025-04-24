@@ -191,7 +191,7 @@ footer {
 
     .language-switch {
         top: 10px;
-        left: 10px;
-        right: auto;
+        right: 10px;
+        left: auto;
     }
 }
