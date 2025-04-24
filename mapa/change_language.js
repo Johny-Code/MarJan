@@ -8,6 +8,10 @@ function switchLanguage(language) {
     if (typeof renderLocationList === 'function' && typeof locations !== 'undefined') {
         renderLocationList(locations);
     }
+
+    if (typeof updateToggleButtonText === 'function') {
+        updateToggleButtonText(); // Update button label
+    }
 }
 
 function initLanguage() {

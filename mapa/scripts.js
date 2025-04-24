@@ -10,20 +10,67 @@ const locations = [
 let map;
 const markers = [];
 
+const toggleBtnLabels = {
+    pl: { show: 'Pokaż listę', hide: 'Ukryj listę' },
+    fr: { show: 'Afficher la liste', hide: 'Masquer la liste' }
+};
+
+function updateToggleButtonText() {
+    const toggleBtn = document.getElementById('toggle-list-btn');
+    const list = document.getElementById('location-ul');
+    const lang = window.current_language || 'pl';
+
+    if (!toggleBtn || !list) return;
+
+    const isVisible = getComputedStyle(list).display !== 'none';
+    toggleBtn.textContent = isVisible ? toggleBtnLabels[lang].hide : toggleBtnLabels[lang].show;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('toggle-list-btn');
+    const list = document.getElementById('location-list');
+
+    toggleBtn.addEventListener('click', () => {
+        const isVisible = list.style.display !== 'none';
+        list.style.display = isVisible ? 'none' : 'block';
+        updateToggleButtonText();
+    });
+
+    updateToggleButtonText(); // Set initial button label
+});
+
 function renderLocationList(locations) {
     const listContainer = document.getElementById('location-list');
     const lang = window.current_language || 'pl';
 
-    let html = '<ul>';
+    // Create list HTML
+    let listHTML = '<ul id="location-ul">';
     locations.forEach((loc, index) => {
-        html += `<li>
-                    <a href="#" onclick="focusOnLocation(${index}); return false;">
-                        ${loc.info[lang] || loc.info.pl}
-                    </a>
-                 </li>`;
+        listHTML += `<li>
+            <a href="#" onclick="focusOnLocation(${index}); return false;">
+                ${loc.info[lang] || loc.info.pl}
+            </a>
+        </li>`;
     });
-    html += '</ul>';
-    listContainer.innerHTML = html;
+    listHTML += '</ul>';
+
+    // Inject list without button first
+    listContainer.innerHTML = listHTML;
+
+    // Add toggle button separately
+    const toggleButton = document.createElement('button');
+    toggleButton.id = 'toggle-list-btn';
+    toggleButton.className = 'toggle-button';
+    listContainer.appendChild(toggleButton);
+
+    const list = document.getElementById('location-ul');
+    toggleButton.addEventListener('click', () => {
+        const isVisible = list.style.display !== 'none';
+        list.style.display = isVisible ? 'none' : 'block';
+        updateToggleButtonText();
+    });
+
+    updateToggleButtonText(); // Initial label
 }
 
 function initMap() {
