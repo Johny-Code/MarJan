@@ -27,10 +27,10 @@ function renderLocationList(locations) {
 }
 
 function initMap() {
-    const nierodzim = { lat: 49.760778, lng: 18.807124 };
+    const cieszyn = { lat: 49.748812, lng: 18.633437 };
     map = new google.maps.Map(document.getElementById("map"), {
         zoom: 12,
-        center: nierodzim,
+        center: cieszyn,
     });
 
     locations.forEach((loc, index) => {
